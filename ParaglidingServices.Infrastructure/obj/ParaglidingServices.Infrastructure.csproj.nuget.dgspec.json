@@ -1,0 +1,271 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Infrastructure\\ParaglidingServices.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj",
+        "projectName": "ParaglidingServices.Core",
+        "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj",
+        "packagesPath": "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tatiana.pavlenco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj",
+        "projectName": "ParaglidingServices.Domain",
+        "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj",
+        "packagesPath": "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tatiana.pavlenco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Infrastructure\\ParaglidingServices.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Infrastructure\\ParaglidingServices.Infrastructure.csproj",
+        "projectName": "ParaglidingServices.Infrastructure",
+        "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Infrastructure\\ParaglidingServices.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tatiana.pavlenco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj": {
+                "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj"
+              },
+              "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj": {
+                "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj"
+              },
+              "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Persistence\\ParaglidingServices.Persistence.csproj": {
+                "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Persistence\\ParaglidingServices.Persistence.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[10.3.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Persistence\\ParaglidingServices.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Persistence\\ParaglidingServices.Persistence.csproj",
+        "projectName": "ParaglidingServices.Persistence",
+        "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Persistence\\ParaglidingServices.Persistence.csproj",
+        "packagesPath": "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Persistence\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tatiana.pavlenco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj": {
+                "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj"
+              },
+              "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj": {
+                "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

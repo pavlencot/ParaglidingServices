@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParaglidingServices.Api", "ParaglidingServices\ParaglidingServices.Api.csproj", "{3C0CDCCD-BE17-4063-B54A-CFE641F965B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParaglidingServices.Domain", "ParaglidingServices.Domain\ParaglidingServices.Domain.csproj", "{9C8ECD9B-A688-4E9A-ACEA-794B7BD3A7D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParaglidingServices.Core", "ParaglidingServices.Core\ParaglidingServices.Core.csproj", "{3AE73881-332D-4080-BA78-EAB4AC9F062F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParaglidingServices.Infrastructure", "ParaglidingServices.Infrastructure\ParaglidingServices.Infrastructure.csproj", "{97ED020B-9D94-4B3B-8521-D2F2CB49702C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParaglidingServices.Persistence", "ParaglidingServices.Persistence\ParaglidingServices.Persistence.csproj", "{7BFA8173-FC6C-490E-BDC8-C9341462AC5C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParaglidingServices.Presentation", "ParaglidingServices.Presentation\ParaglidingServices.Presentation.csproj", "{242512FD-8A60-4214-8F9A-3A003D4A8966}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C0CDCCD-BE17-4063-B54A-CFE641F965B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C0CDCCD-BE17-4063-B54A-CFE641F965B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C0CDCCD-BE17-4063-B54A-CFE641F965B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C0CDCCD-BE17-4063-B54A-CFE641F965B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C8ECD9B-A688-4E9A-ACEA-794B7BD3A7D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C8ECD9B-A688-4E9A-ACEA-794B7BD3A7D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C8ECD9B-A688-4E9A-ACEA-794B7BD3A7D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C8ECD9B-A688-4E9A-ACEA-794B7BD3A7D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AE73881-332D-4080-BA78-EAB4AC9F062F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE73881-332D-4080-BA78-EAB4AC9F062F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE73881-332D-4080-BA78-EAB4AC9F062F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE73881-332D-4080-BA78-EAB4AC9F062F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97ED020B-9D94-4B3B-8521-D2F2CB49702C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97ED020B-9D94-4B3B-8521-D2F2CB49702C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97ED020B-9D94-4B3B-8521-D2F2CB49702C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97ED020B-9D94-4B3B-8521-D2F2CB49702C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BFA8173-FC6C-490E-BDC8-C9341462AC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BFA8173-FC6C-490E-BDC8-C9341462AC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BFA8173-FC6C-490E-BDC8-C9341462AC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BFA8173-FC6C-490E-BDC8-C9341462AC5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{242512FD-8A60-4214-8F9A-3A003D4A8966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{242512FD-8A60-4214-8F9A-3A003D4A8966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{242512FD-8A60-4214-8F9A-3A003D4A8966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{242512FD-8A60-4214-8F9A-3A003D4A8966}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BD370F7-1A59-4A4F-81E9-196F008C9497}
+	EndGlobalSection
+EndGlobal

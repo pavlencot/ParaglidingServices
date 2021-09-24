@@ -1,0 +1,12 @@
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\bin\Debug\net5.0\ParaglidingServices.Infrastructure.deps.json
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\bin\Debug\net5.0\ParaglidingServices.Infrastructure.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\bin\Debug\net5.0\ref\ParaglidingServices.Infrastructure.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\bin\Debug\net5.0\ParaglidingServices.Infrastructure.pdb
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ParaglidingServices.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ParaglidingServices.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ParaglidingServices.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ParaglidingServices.Infrastructure.AssemblyInfo.cs
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ParaglidingServices.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ParaglidingServices.Infrastructure.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ref\ParaglidingServices.Infrastructure.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ParaglidingServices.Infrastructure.pdb
