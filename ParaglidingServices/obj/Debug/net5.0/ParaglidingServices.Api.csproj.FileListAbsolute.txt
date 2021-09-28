@@ -69,3 +69,8 @@ C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\o
 C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\obj\Debug\net5.0\ref\ParaglidingServices.Api.dll
 C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\obj\Debug\net5.0\ParaglidingServices.Api.pdb
 C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\obj\Debug\net5.0\ParaglidingServices.Api.genruntimeconfig.cache
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll

@@ -18,8 +18,8 @@ namespace ParaglidingServices.Infrastructure.Commands.Pilots
 
             var pilot = await _dbContext.Pilots.SingleByIdOrDefaultAsync(pilotId);
 
-            pilot.Licence = model.Licence;
-            pilot.Location = model.Location;
+         /*   pilot.Licence = model.LicenceId;
+            pilot.Location = model.Location;*/
         }
     }
 }

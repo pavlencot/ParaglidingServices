@@ -12,11 +12,11 @@ namespace ParaglidingServices.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PilotController : BaseController
+    public class PilotsController : BaseController
     {
         private readonly IConfiguration _configuration;
 
-        public PilotController(IConfiguration configuration)
+        public PilotsController(IConfiguration configuration)
         {
             _configuration = configuration;
         }

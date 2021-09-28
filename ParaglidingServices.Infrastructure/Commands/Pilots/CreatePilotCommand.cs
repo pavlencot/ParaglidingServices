@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Commands.Pilots
 {
-    public class AddPilotCommand : Command<(long, PilotCreateUpdateModel), Pilot>
+    public class CreatePilotCommand : Command<(long, PilotCreateUpdateModel), Pilot>
     {
         private readonly AppDbContext _dbContext;
-        public AddPilotCommand(AppDbContext dbContext)
+        public CreatePilotCommand(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -20,7 +20,7 @@ namespace ParaglidingServices.Infrastructure.Commands.Pilots
         {
             var (pilotId, model) = input;
 
-            var pilot = new Pilot(model.Licence, model.Gender, model.Location);
+            var pilot = new Pilot(/*model.LicenceId, model.Gender, model.Location*/);
 
             await _dbContext.Pilots.AddAsync(pilot);
 

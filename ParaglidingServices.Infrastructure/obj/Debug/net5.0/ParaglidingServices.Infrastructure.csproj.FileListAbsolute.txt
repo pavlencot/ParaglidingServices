@@ -10,3 +10,10 @@ C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.I
 C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ParaglidingServices.Infrastructure.dll
 C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ref\ParaglidingServices.Infrastructure.dll
 C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ParaglidingServices.Infrastructure.pdb
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\bin\Debug\net5.0\ParaglidingServices.Core.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\bin\Debug\net5.0\ParaglidingServices.Domain.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\bin\Debug\net5.0\ParaglidingServices.Persistence.dll
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\bin\Debug\net5.0\ParaglidingServices.Core.pdb
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\bin\Debug\net5.0\ParaglidingServices.Domain.pdb
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\bin\Debug\net5.0\ParaglidingServices.Persistence.pdb
+C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Infrastructure\obj\Debug\net5.0\ParaglidingServices.Infrastructure.csproj.CopyComplete

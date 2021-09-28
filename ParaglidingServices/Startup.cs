@@ -14,6 +14,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using ParaglidingServices.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
+using ParaglidingServices.Core;
+using ParaglidingServices.Infrastructure;
+using AutoMapper;
+using ParaglidingServices.Infrastructure.Profiles;
+using ParaglidingServices.Api.Extensions;
 
 namespace ParaglidingServices
 {
@@ -32,6 +37,20 @@ namespace ParaglidingServices
             services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("ConnectionStr")));
 
             services.AddControllers();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            //services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddCommands();
+            services.AddQueries();
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new OrganizerProfile());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             //Swagger
             services.AddSwaggerGen(c =>

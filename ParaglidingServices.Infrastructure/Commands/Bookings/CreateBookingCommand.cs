@@ -10,11 +10,11 @@ using ParaglidingServices.Persistence.Data;
 
 namespace ParaglidingServices.Infrastructure.Commands.Bookings
 {
-    public class AddBookingCommand : Command<(long, BookingCreateModel), Booking>
+    public class CreateBookingCommand : Command<(long, BookingCreateModel), Booking>
     {
         private readonly AppDbContext _dbContext;
 
-        public AddBookingCommand(AppDbContext dbContext)
+        public CreateBookingCommand(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
