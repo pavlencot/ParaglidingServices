@@ -12,6 +12,12 @@ namespace ParaglidingServices.Infrastructure.Commands.Pilots
     public class UpdatePilotCommand : Command<(long, PilotCreateUpdateModel)>
     {
         private readonly AppDbContext _dbContext;
+
+        public UpdatePilotCommand(AppDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public override async Task Dispatch((long, PilotCreateUpdateModel) input)
         {
             var (pilotId, model) = input;

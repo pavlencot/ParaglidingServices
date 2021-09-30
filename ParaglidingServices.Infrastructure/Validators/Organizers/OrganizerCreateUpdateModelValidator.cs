@@ -8,9 +8,9 @@ using ParaglidingServices.Infrastructure.Models.Organizers;
 
 namespace ParaglidingServices.Infrastructure.Validators.Organizers
 {
-    public class OrganizerCreateUpdateModelValidator : AbstractValidator<OrganizerCreateUpdateModel>
+    public class OrganizerValidator : AbstractValidator<OrganizerModel>
     {
-        public OrganizerCreateUpdateModelValidator()
+        public OrganizerValidator()
         {
             RuleFor(c => c.Code).NotEmpty();
             RuleFor(n => n.Name).MaximumLength(100).NotEmpty();

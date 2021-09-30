@@ -18,7 +18,17 @@ namespace ParaglidingServices.Domain.Entities
 
         public Organizer()
         {
+                
+        }
 
+        public Organizer(long code, string name, string adress, string phoneNumber, string description)
+        {
+            OrganizationCode = code;
+            Name = name;
+            Adress = adress;
+            PhoneNumber = phoneNumber;
+            Description = description;
+            
         }
     }
 }

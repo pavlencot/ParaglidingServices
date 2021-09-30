@@ -13,7 +13,8 @@ namespace ParaglidingServices.Infrastructure.Profiles
     {
         public OrganizerProfile()
         {
-            CreateMap<Organizer, OrganizerModel>();
+            CreateMap<Organizer, OrganizerModel>().ReverseMap();
+            CreateMap<OrganizerCreateUpdateModel, Organizer>();
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 using ParaglidingServices.Core;
+using System.Threading;
 
 namespace ParaglidingServices.Api.Controllers
 {
@@ -52,6 +53,20 @@ namespace ParaglidingServices.Api.Controllers
             await command.Dispatch(input);
             await UnitOfWork.SaveChangesAsync();
             return NoContent();
+        }
+
+        protected async Task<ActionResult<TOutput>> ExecuteQuery<TQuery, TOutput>(CancellationToken cancellationToken)
+            where TQuery : Query<TOutput>
+        {
+            var query = HttpContext.RequestServices.GetRequiredService<TQuery>();
+            return await query.Dispatch(cancellationToken);
+        }
+
+        protected async Task<ActionResult<TOutput>> ExecuteQuery<TQuery, TInput, TOutput>(TInput input, CancellationToken cancellationToken)
+            where TQuery : Query<TInput, TOutput>
+        {
+            var query = HttpContext.RequestServices.GetRequiredService<TQuery>();
+            return await query.Dispatch(input, cancellationToken);
         }
     }
 }

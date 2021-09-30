@@ -19,6 +19,8 @@ using ParaglidingServices.Infrastructure;
 using AutoMapper;
 using ParaglidingServices.Infrastructure.Profiles;
 using ParaglidingServices.Api.Extensions;
+using FluentValidation.AspNetCore;
+using ParaglidingServices.Infrastructure.Validators.Organizers;
 
 namespace ParaglidingServices
 {
@@ -31,26 +33,22 @@ namespace ParaglidingServices
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("ConnectionStr")));
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<OrganizerValidator>());
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            //services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddCommands();
             services.AddQueries();
 
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new OrganizerProfile());
-            });
-            IMapper mapper = mappingConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            services.AddAutoMapper(typeof(OrganizerProfile).Assembly);
+
 
             //Swagger
             services.AddSwaggerGen(c =>
@@ -59,7 +57,6 @@ namespace ParaglidingServices
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

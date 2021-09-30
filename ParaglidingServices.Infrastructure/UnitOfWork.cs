@@ -13,12 +13,10 @@ namespace ParaglidingServices.Infrastructure
     public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _dbContext;
-        private readonly HttpContext _httpContext;
 
-        public UnitOfWork(AppDbContext dbContext, IHttpContextAccessor accessor)
+        public UnitOfWork(AppDbContext dbContext)
         {
             _dbContext = dbContext;
-            _httpContext = accessor.HttpContext;
         }
         public void AssertEntityAdded<TEntity>(TEntity entity) where TEntity : class
         {

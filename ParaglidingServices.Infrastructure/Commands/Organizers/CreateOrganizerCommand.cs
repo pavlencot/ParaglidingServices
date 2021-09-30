@@ -9,29 +9,28 @@ using System.Threading.Tasks;
 using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Models.Organizers;
 using ParaglidingServices.Persistence.Data;
+using AutoMapper;
 
 namespace ParaglidingServices.Infrastructure.Commands.Organizers
 {
-    public class CreateOrganizerCommand : Command<(long, OrganizerCreateUpdateModel), Organizer>
+    public class CreateOrganizerCommand : Command<OrganizerCreateUpdateModel, long>
     {
-        private readonly HttpContext _httpContext;
         private readonly AppDbContext _dbContext;
+        private readonly IMapper _mapper;
 
-        public CreateOrganizerCommand(IHttpContextAccessor accessor, AppDbContext dbContext)
+        public CreateOrganizerCommand(AppDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
-            _httpContext = accessor.HttpContext;
+            _mapper = mapper;
         }
 
-        public override async Task<Organizer> Dispatch((long, OrganizerCreateUpdateModel) input)
+        public override async Task<long> Dispatch(OrganizerCreateUpdateModel input)
         {
-            var (organizerId, organizerModel) = input;
-
-            var organizer = new Organizer();
+            var organizer = _mapper.Map<Organizer>(input);
 
             await _dbContext.Organizers.AddAsync(organizer);
 
-            return organizer;
+            return organizer.Id;
 
         }
     }
