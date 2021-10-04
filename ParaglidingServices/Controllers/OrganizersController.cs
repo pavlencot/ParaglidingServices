@@ -30,6 +30,12 @@ namespace ParaglidingServices.Api.Controllers
             return ExecuteQuery<GetOrganizerByIdQuery, long, OrganizerModel>(organizerId, cancellationToken);
         }
 
+        [HttpPut]
+        public Task<ActionResult> Update([FromRoute] long organizerId, [FromBody] OrganizerCreateUpdateModel input)
+        {
+            return ExecuteCommand<UpdateOrganizerCommand, (long, OrganizerCreateUpdateModel)>((organizerId, input));
+        }
+
         [HttpDelete("{organizerId:long}")]
         public Task<ActionResult> Delete([FromRoute] long organizerId)
         {

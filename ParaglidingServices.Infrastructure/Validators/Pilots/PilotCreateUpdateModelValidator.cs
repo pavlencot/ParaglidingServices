@@ -16,12 +16,12 @@ namespace ParaglidingServices.Infrastructure.Validators.Pilots
         {
             RuleFor(n => n.Name).MaximumLength(75).NotEmpty();
             RuleFor(c => c.Country).MaximumLength(50).NotEmpty();
-/*          RuleFor(g => (long) g.PilotGender)
-                .GreaterThanOrEqualTo((long)Enum.GetValues(typeof(GenderId)).Cast<GenderId>().Min())
-                .LessThanOrEqualTo((long)Enum.GetValues(typeof(GenderId)).Cast<GenderId>().Max())
-                .When(x => x.PilotGender != null && x.PilotGender > 0);*/
+/*            RuleFor(g => (long)g.PilotGender)
+                  .GreaterThanOrEqualTo((long)Enum.GetValues(typeof(GenderId)).Cast<GenderId>().Min())
+                  .LessThanOrEqualTo((long)Enum.GetValues(typeof(GenderId)).Cast<GenderId>().Max())
+                  .When(x => x.PilotGender != null && x.PilotGender > 0);*/
 
-            RuleFor(l => l.LicenceId).NotEmpty();
+            //RuleFor(l => l.LicenceId).NotEmpty();
         }
     }
 }

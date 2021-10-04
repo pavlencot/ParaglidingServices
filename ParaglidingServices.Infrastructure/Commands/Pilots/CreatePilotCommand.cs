@@ -1,4 +1,5 @@
-﻿using ParaglidingServices.Domain.Entities;
+﻿using AutoMapper;
+using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Models.Pilots;
 using ParaglidingServices.Persistence.Data;
 using System;
@@ -9,22 +10,23 @@ using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Commands.Pilots
 {
-    public class CreatePilotCommand : Command<(long, PilotCreateUpdateModel), Pilot>
+    public class CreatePilotCommand : Command<PilotCreateUpdateModel, long>
     {
         private readonly AppDbContext _dbContext;
-        public CreatePilotCommand(AppDbContext dbContext)
+        private readonly IMapper _mapper;
+
+        public CreatePilotCommand(AppDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
+            _mapper = mapper;
         }
-        public override async Task<Pilot> Dispatch((long, PilotCreateUpdateModel) input)
+        public override async Task<long> Dispatch(PilotCreateUpdateModel input)
         {
-            var (pilotId, model) = input;
-
-            var pilot = new Pilot(/*model.LicenceId, model.Gender, model.Location*/);
+            var pilot = _mapper.Map<Pilot>(input);
 
             await _dbContext.Pilots.AddAsync(pilot);
 
-            return pilot;
+            return pilot.Id;
         }
     }
 }
