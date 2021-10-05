@@ -1,4 +1,5 @@
 ﻿using ParaglidingServices.Domain.Entities;
+using ParaglidingServices.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace ParaglidingServices.Infrastructure.Models.Pilots
     public class PilotCreateUpdateModel
     {
         public string Name { get; set; }
-        public string Country { get; set; } 
-        public Gender PilotGender { get; set; }
+ 
+        public GenderId Gender { get; set; }
 
 
     }
