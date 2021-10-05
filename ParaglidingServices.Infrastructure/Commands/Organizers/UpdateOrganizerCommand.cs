@@ -25,15 +25,13 @@ namespace ParaglidingServices.Infrastructure.Commands.Organizers
         public override async Task Dispatch((long, OrganizerCreateUpdateModel) input)
         {
 
-            var (organizerId, organizerModel) = input;
-
-            await _dbContext.Organizers.SingleByIdOrDefaultAsync(organizerId);
-
-
+            var (orgId, orgInput) = input;
+            var org = await _dbContext.Organizers.SingleByIdOrDefaultAsync(orgId);
             var organizer = _mapper.Map<Organizer>(input);
+            //await _dbContext.Organizers.Update(organizer);
 
 
-            //return organizer;
+            //_mapper.Map<OrganizerCreateUpdateModel>(input.Item2);
         }
 
     }

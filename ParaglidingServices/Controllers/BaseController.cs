@@ -55,14 +55,6 @@ namespace ParaglidingServices.Api.Controllers
             return NoContent();
         }
 
-        protected async Task<ActionResult> ExecuteCommand<TCommand, TInput, TOutput>(TInput input)
-            where TCommand : Command<TInput, TOutput> where TOutput : BaseEntity
-        {
-            var command = HttpContext.RequestServices.GetRequiredService<TCommand>();
-            await command.Dispatch(input);
-            await UnitOfWork.SaveChangesAsync();
-            return NoContent();
-        }
 
         protected async Task<ActionResult<TOutput>> ExecuteQuery<TQuery, TOutput>(CancellationToken cancellationToken)
             where TQuery : Query<TOutput>
