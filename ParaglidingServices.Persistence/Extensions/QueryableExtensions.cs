@@ -16,14 +16,14 @@ namespace ParaglidingServices.Persistence.Extensions
             where TSource : BaseEntity
         {
             return await src.SingleOrDefaultAsync(x => x.Id == id, cancellationToken) ??
-                throw EntityNotFoundException.OfType<TSource>();
+                throw EntityNotFoundException.OfType<TSource>(id);
         }
 
         public static async Task<TSource> SingleByIdAsync<TSource>(this IQueryable<TSource> src, long id, CancellationToken cancellationToken = default)
             where TSource : BaseEntity
         {
             return await src.SingleAsync(x => x.Id.Equals(id), cancellationToken) ??
-                   throw EntityNotFoundException.OfType<TSource>();
+                   throw EntityNotFoundException.OfType<TSource>(id);
         }
     }
 }

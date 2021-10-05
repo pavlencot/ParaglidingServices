@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Commands.Pilots
 {
-    public class CreatePilotCommand : Command<PilotCreateUpdateModel, long>
+    public class CreatePilotCommand : Command<PilotCreateUpdateModel, Pilot>
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -20,13 +20,13 @@ namespace ParaglidingServices.Infrastructure.Commands.Pilots
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public override async Task<long> Dispatch(PilotCreateUpdateModel input)
+        public override async Task<Pilot> Dispatch(PilotCreateUpdateModel input)
         {
             var pilot = _mapper.Map<Pilot>(input);
 
             await _dbContext.Pilots.AddAsync(pilot);
 
-            return pilot.Id;
+            return pilot;
         }
     }
 }

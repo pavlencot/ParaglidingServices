@@ -8,11 +8,11 @@ using ParaglidingServices.Infrastructure.Models.Organizers;
 
 namespace ParaglidingServices.Infrastructure.Validators.Organizers
 {
-    public class OrganizerValidator : AbstractValidator<OrganizerModel>
+    public class OrganizerCreateUpdateModelValidator : AbstractValidator<OrganizerCreateUpdateModel>
     {
-        public OrganizerValidator()
+        public OrganizerCreateUpdateModelValidator()
         {
-            RuleFor(c => c.Code).NotEmpty();
+            RuleFor(c => c.OrganizationCode).NotEmpty();
             RuleFor(n => n.Name).MaximumLength(100).NotEmpty();
             RuleFor(a => a.Adress).NotEmpty();
             RuleFor(p => p.PhoneNumber).NotEmpty();

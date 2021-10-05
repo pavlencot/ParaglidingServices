@@ -19,12 +19,5 @@ namespace ParaglidingServices.Domain.Entities
         {
 
         }
-
-/*        public Pilot(Licence licence, Gender gender, Location location)
-        {
-            Licence = licence;
-            Gender = gender;
-            Location = location;
-        }*/
     }
 }

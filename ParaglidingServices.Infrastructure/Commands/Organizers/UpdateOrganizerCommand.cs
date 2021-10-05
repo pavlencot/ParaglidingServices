@@ -22,14 +22,18 @@ namespace ParaglidingServices.Infrastructure.Commands.Organizers
             _mapper = mapper;
         }
 
-        public override async Task<Organizer> Dispatch((long, OrganizerCreateUpdateModel) input)
+        public override async Task Dispatch((long, OrganizerCreateUpdateModel) input)
         {
-            //var (organizerId, organizerModel) = input;
+
+            var (organizerId, organizerModel) = input;
+
+            await _dbContext.Organizers.SingleByIdOrDefaultAsync(organizerId);
+
+
             var organizer = _mapper.Map<Organizer>(input);
 
-            await _dbContext.Organizers.SingleByIdOrDefaultAsync(input.Item1);
 
-            return organizer;
+            //return organizer;
         }
 
     }

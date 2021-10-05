@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using ParaglidingServices.Api.Controllers;
+using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Commands.Pilots;
 using ParaglidingServices.Infrastructure.Models.Pilots;
 using ParaglidingServices.Infrastructure.Queries.Pilots;
@@ -20,7 +21,7 @@ namespace ParaglidingServices.Controllers
         [HttpPost]
         public Task<ActionResult<long>> Create([FromBody] PilotCreateUpdateModel input)
         {
-            return ExecuteCommandReturningEntityId<CreatePilotCommand, PilotCreateUpdateModel, long>(input);
+            return ExecuteCommandReturningEntityId<CreatePilotCommand, PilotCreateUpdateModel, Pilot>(input);
         }
 
         [HttpGet]

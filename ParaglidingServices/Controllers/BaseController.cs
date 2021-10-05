@@ -30,12 +30,12 @@ namespace ParaglidingServices.Api.Controllers
         }
 
         protected async Task<ActionResult<long>> ExecuteCommandReturningEntityId<TCommand, TInput, TOutput>(TInput input)
-            where TCommand : Command<TInput, TOutput>
+            where TCommand : Command<TInput, TOutput> where TOutput : BaseEntity
         {
             var command = HttpContext.RequestServices.GetRequiredService<TCommand>();
             var output = await command.Dispatch(input);
             await UnitOfWork.SaveChangesAsync();
-            return StatusCode(StatusCodes.Status201Created, output);
+            return StatusCode(StatusCodes.Status201Created, output.Id);
         }
 
         protected async Task<ActionResult> ExecuteCommand<TCommand>() where TCommand : Command
@@ -48,6 +48,15 @@ namespace ParaglidingServices.Api.Controllers
 
         protected async Task<ActionResult> ExecuteCommand<TCommand, TInput>(TInput input)
             where TCommand : Command<TInput>
+        {
+            var command = HttpContext.RequestServices.GetRequiredService<TCommand>();
+            await command.Dispatch(input);
+            await UnitOfWork.SaveChangesAsync();
+            return NoContent();
+        }
+
+        protected async Task<ActionResult> ExecuteCommand<TCommand, TInput, TOutput>(TInput input)
+            where TCommand : Command<TInput, TOutput> where TOutput : BaseEntity
         {
             var command = HttpContext.RequestServices.GetRequiredService<TCommand>();
             await command.Dispatch(input);

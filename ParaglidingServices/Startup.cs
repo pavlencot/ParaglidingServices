@@ -38,7 +38,7 @@ namespace ParaglidingServices
             services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("ConnectionStr")));
 
             services.AddControllers()
-                .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<OrganizerValidator>());
+                .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<OrganizerCreateUpdateModelValidator>());
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

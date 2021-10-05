@@ -13,7 +13,7 @@ using AutoMapper;
 
 namespace ParaglidingServices.Infrastructure.Commands.Organizers
 {
-    public class CreateOrganizerCommand : Command<OrganizerCreateUpdateModel, long>
+    public class CreateOrganizerCommand : Command<OrganizerCreateUpdateModel, Organizer>
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -24,13 +24,13 @@ namespace ParaglidingServices.Infrastructure.Commands.Organizers
             _mapper = mapper;
         }
 
-        public override async Task<long> Dispatch(OrganizerCreateUpdateModel input)
+        public override async Task<Organizer> Dispatch(OrganizerCreateUpdateModel input)
         {
             var organizer = _mapper.Map<Organizer>(input);
 
             await _dbContext.Organizers.AddAsync(organizer);
 
-            return organizer.Id;
+            return organizer;
 
         }
     }
