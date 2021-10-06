@@ -24,7 +24,7 @@ namespace ParaglidingServices.Infrastructure.Queries.Pilots
 
         public override async Task<PilotModel> Dispatch(long input, CancellationToken cancellationToken = default)
         {
-            var pilot = await _dbContext.Organizers.SingleByIdOrDefaultAsync(input, cancellationToken);
+            var pilot = await _dbContext.Pilots.SingleByIdOrDefaultAsync(input, cancellationToken);
 
             var result = _mapper.Map<PilotModel>(pilot);
 

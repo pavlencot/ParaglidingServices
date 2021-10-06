@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ParaglidingServices.Domain.Entities;
-using ParaglidingServices.Infrastructure.Models.Pilots;
+using ParaglidingServices.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +9,11 @@ using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Profiles
 {
-    public class PilotProfile : Profile
+    public class BookingLocationProfile : Profile
     {
-        public PilotProfile()
+        public BookingLocationProfile()
         {
-            CreateMap<Pilot, PilotModel>()
-                .ReverseMap();
-
-            CreateMap<PilotCreateUpdateModel, Pilot>();
+            CreateMap<BookingLocationModel, BookingLocation>().ReverseMap();
         }
-        
     }
 }

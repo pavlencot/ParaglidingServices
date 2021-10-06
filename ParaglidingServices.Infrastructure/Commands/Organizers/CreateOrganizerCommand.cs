@@ -31,7 +31,6 @@ namespace ParaglidingServices.Infrastructure.Commands.Organizers
             await _dbContext.Organizers.AddAsync(organizer);
 
             return organizer;
-
         }
     }
 }

@@ -22,14 +22,15 @@ namespace ParaglidingServices.Infrastructure.Commands.Pilots
             _mapper = mapper;
         }
 
-        public override async Task<Pilot> Dispatch((long, PilotCreateUpdateModel) input)
+        public override async Task Dispatch((long, PilotCreateUpdateModel) input)
         {
-            //var (pilotId, model) = input;
-            var pilot = _mapper.Map<Pilot>(input); 
+            var (pilotId, pilotModel) = input;
 
-            await _dbContext.Pilots.SingleByIdOrDefaultAsync(input.Item1);
+            var pilot = await _dbContext.Pilots.SingleByIdOrDefaultAsync(pilotId);
 
-            return pilot;
+            _mapper.Map(pilotModel, pilot);
+
+            _dbContext.Pilots.Update(pilot);
         }
     }
 }

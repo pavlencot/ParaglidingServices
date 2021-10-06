@@ -24,24 +24,24 @@ namespace ParaglidingServices.Controllers
             return ExecuteCommandReturningEntityId<CreatePilotCommand, PilotCreateUpdateModel, Pilot>(input);
         }
 
-        [HttpGet]
+        [HttpGet("{pilotId:long}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public Task<ActionResult<PilotModel>> GetById([FromRoute] long organizerId, CancellationToken cancellationToken)
+        public Task<ActionResult<PilotModel>> GetById([FromRoute] long pilotId, CancellationToken cancellationToken)
         {
-            return ExecuteQuery<GetPilotByIdQuery, long, PilotModel>(organizerId, cancellationToken);
+            return ExecuteQuery<GetPilotByIdQuery, long, PilotModel>(pilotId, cancellationToken);
         }
 
-        [HttpPut]
-        public Task<ActionResult> Update([FromRoute] long organizerId, [FromBody] PilotCreateUpdateModel input)
+        [HttpPut("{pilotId:long}")]
+        public Task<ActionResult> Update([FromRoute] long pilotId, [FromBody] PilotCreateUpdateModel input)
         {
-            return ExecuteCommand<UpdatePilotCommand, (long, PilotCreateUpdateModel)>((organizerId, input));
+            return ExecuteCommand<UpdatePilotCommand, (long, PilotCreateUpdateModel)>((pilotId, input));
         }
 
         [HttpDelete("{pilotId:long}")]
-        public Task<ActionResult> Delete([FromRoute] long organizerId)
+        public Task<ActionResult> Delete([FromRoute] long pilotId)
         {
-            return ExecuteCommand<DeletePilotCommand, long>(organizerId);
+            return ExecuteCommand<DeletePilotCommand, long>(pilotId);
         }
     }
 }

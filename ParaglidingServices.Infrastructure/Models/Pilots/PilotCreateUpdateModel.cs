@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 namespace ParaglidingServices.Infrastructure.Models.Pilots
 {
     public class PilotCreateUpdateModel
-    {
-        public string Name { get; set; }
- 
+    { 
         public GenderId Gender { get; set; }
 
-
+        public long LocationId { get; set; }
     }
 }

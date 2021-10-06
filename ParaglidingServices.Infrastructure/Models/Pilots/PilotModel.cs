@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ParaglidingServices.Domain.Entities;
+using ParaglidingServices.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +10,8 @@ namespace ParaglidingServices.Infrastructure.Models.Pilots
 {
     public class PilotModel
     {
-        public long Id { get; set; }
-        public long Licence { get; set; }
-        public string LicenceCategory { get; set; }
+        public GenderId Gender { get; set; }
+
+        public long LocationId { get; set; }
     }
 }
