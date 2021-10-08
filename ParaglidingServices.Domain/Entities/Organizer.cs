@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ParaglidingServices.Domain.Enums;
+﻿using System.Collections.Generic;
 
 namespace ParaglidingServices.Domain.Entities
 {
@@ -14,7 +9,7 @@ namespace ParaglidingServices.Domain.Entities
         public string Adress { get; set; }
         public string PhoneNumber { get; set; }
         public string Description { get; set; }
-        public virtual ICollection<CompetitionOrganizer> CompetitionOrganizer { get; set; }
+        public virtual IEnumerable<CompetitionOrganizer> CompetitionOrganizer { get; set; }
 
         public Organizer()
         {

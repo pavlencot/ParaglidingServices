@@ -2,9 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;

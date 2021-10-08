@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using ParaglidingServices.Core;
-using ParaglidingServices.Domain.Entities;
+﻿using ParaglidingServices.Core;
 using ParaglidingServices.Persistence.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure

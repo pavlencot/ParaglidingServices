@@ -1,13 +1,9 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Commands.Organizers;
 using ParaglidingServices.Infrastructure.Models.Organizers;
 using ParaglidingServices.Infrastructure.Queries.Organizers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -35,6 +31,12 @@ namespace ParaglidingServices.Api.Controllers
         {
             return ExecuteCommand<UpdateOrganizerCommand, (long, OrganizerCreateUpdateModel)>((organizerId, input));
         }
+
+/*        [HttpPatch("{organizerId:long}")]
+        public Task<ActionResult> Patch([FromRoute] long organizerId, JsonPatchDocument<Organizer> patchEntity)
+        {
+
+        }*/
 
         [HttpDelete("{organizerId:long}")]
         public Task<ActionResult> Delete([FromRoute] long organizerId)

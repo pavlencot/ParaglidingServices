@@ -1,17 +1,14 @@
-﻿using ParaglidingServices.Domain.Entities;
-using ParaglidingServices.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace ParaglidingServices.Infrastructure.Models.Pilots
 {
     public class PilotCreateUpdateModel
-    { 
-        public GenderId Gender { get; set; }
-
+    {
         public long LocationId { get; set; }
+
+/*        public long LicenceNr { get; set; }
+        public string Category { get; set; }
+        public DateTimeOffset IssuedOn { get; set; }
+        public DateTimeOffset ValidUntil { get; set; }*/
     }
 }

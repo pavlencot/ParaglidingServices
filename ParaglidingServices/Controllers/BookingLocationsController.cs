@@ -4,9 +4,6 @@ using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Commands.BookingLocations;
 using ParaglidingServices.Infrastructure.Models;
 using ParaglidingServices.Infrastructure.Queries.BookingLocations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,12 +25,6 @@ namespace ParaglidingServices.Api.Controllers
         {
             return ExecuteQuery<GetAllBookingLocationsQuery, BookingLocationModel>(cancellationToken);
         }
-
-/*        [HttpPut("{organizerId:long}")]
-        public Task<ActionResult> Update([FromRoute] long organizerId, [FromBody] BookingLocationModel input)
-        {
-            return ExecuteCommand<UpdateOrganizerCommand, (long, BookingLocationModel)>((organizerId, input));
-        }*/
 
         [HttpDelete("{bookingLocationId:long}")]
         public Task<ActionResult> Delete([FromRoute] long bookingLocationId)

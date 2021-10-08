@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Models.Organizers;
 using ParaglidingServices.Persistence.Data;

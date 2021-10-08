@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ParaglidingServices.Persistence.Data;
 using ParaglidingServices.Infrastructure.Models.Organizers;
 using ParaglidingServices.Persistence.Extensions;
 using AutoMapper;
-using ParaglidingServices.Domain.Entities;
 
 namespace ParaglidingServices.Infrastructure.Commands.Organizers
 {

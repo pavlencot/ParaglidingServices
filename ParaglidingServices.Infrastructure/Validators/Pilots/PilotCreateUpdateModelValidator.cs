@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
-using ParaglidingServices.Domain.Entities;
-using ParaglidingServices.Domain.Enums;
+﻿using FluentValidation;
 using ParaglidingServices.Infrastructure.Models.Pilots;
 
 namespace ParaglidingServices.Infrastructure.Validators.Pilots
@@ -14,9 +7,6 @@ namespace ParaglidingServices.Infrastructure.Validators.Pilots
     {
         public PilotCreateUpdateModelValidator()
         {
-            RuleFor(g => g.Gender).IsInEnum();
-
-            //RuleFor(l => l.LicenceId).NotEmpty();
         }
     }
 }

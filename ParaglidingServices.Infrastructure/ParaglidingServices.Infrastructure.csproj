@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Folder Include="Commands\Clients\" />
+    <Folder Include="Models\Clients\" />
   </ItemGroup>
 
   <ItemGroup>

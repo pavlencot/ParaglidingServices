@@ -1,14 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using ParaglidingServices.Api.Controllers;
 using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Commands.Pilots;
 using ParaglidingServices.Infrastructure.Models.Pilots;
 using ParaglidingServices.Infrastructure.Queries.Pilots;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 

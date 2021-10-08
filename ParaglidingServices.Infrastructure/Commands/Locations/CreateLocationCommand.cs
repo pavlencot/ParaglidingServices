@@ -2,10 +2,6 @@
 using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Models.Locations;
 using ParaglidingServices.Persistence.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Commands.Locations
@@ -20,6 +16,7 @@ namespace ParaglidingServices.Infrastructure.Commands.Locations
             _dbContext = dbContext;
             _mapper = mapper;
         }
+
         public override async Task<Location> Dispatch(LocationModel input)
         {
             var location = _mapper.Map<Location>(input);

@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Models.Pilots;
 using ParaglidingServices.Persistence.Data;
 using ParaglidingServices.Persistence.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Commands.Pilots

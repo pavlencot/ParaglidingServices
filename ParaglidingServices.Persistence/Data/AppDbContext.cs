@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ParaglidingServices.Domain.Entities;
-using ParaglidingServices.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
-using ParaglidingServices.Persistence.Configurations;
 
 namespace ParaglidingServices.Persistence.Data
 {
@@ -36,18 +30,6 @@ namespace ParaglidingServices.Persistence.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-
-
-            modelBuilder.Entity<Gender>()
-                //.Ignore(dl => dl.Id)
-                .HasData(Enum.GetValues(typeof(GenderId))
-                .Cast<GenderId>()
-                .Select(dl => new Gender
-                    {
-                        Id = (long)dl,
-                        Name = dl.ToString()
-                    })
-                );
 
             /*
                         modelBuilder.Entity<Coupon>()
