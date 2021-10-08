@@ -6,8 +6,6 @@ namespace ParaglidingServices.Persistence.Data
 {
     public class AppDbContext : DbContext
     {
-       
-
         public AppDbContext(DbContextOptions options) : base(options) { }
 
 
@@ -30,17 +28,6 @@ namespace ParaglidingServices.Persistence.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-
-            /*
-                        modelBuilder.Entity<Coupon>()
-                            .HasData(
-                            new Coupon { Code = Guid.NewGuid(), IsApplied = false, ValidUntil = new DateTime(2022, 1, 1, 0, 0, 0) },
-                            new Coupon { Code = Guid.NewGuid(), IsApplied = false, ValidUntil = new DateTime(2022, 2, 1, 0, 0, 0) },
-                            new Coupon { Code = Guid.NewGuid(), IsApplied = false, ValidUntil = new DateTime(2022, 3, 1, 0, 0, 0) }
-
-
-                            );*/
         }
-
     }
 }

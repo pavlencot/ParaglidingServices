@@ -9,9 +9,9 @@ using ParaglidingServices.Domain.Entities;
 
 namespace ParaglidingServices.Persistence.Configurations
 {
-    public class CouponConfiguration : IEntityTypeConfiguration<Coupon>
+    public class CouponConfiguration : BaseEntityTypeConfiguration<Coupon>
     {
-        public void Configure(EntityTypeBuilder<Coupon> builder)
+        public override void Configure(EntityTypeBuilder<Coupon> builder)
         {
             builder.Property(c => c.Code)
                 .IsRequired();

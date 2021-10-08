@@ -9,9 +9,9 @@ using ParaglidingServices.Domain.Entities;
 
 namespace ParaglidingServices.Persistence.Configurations
 {
-    public class BookingConfiguration : IEntityTypeConfiguration<Booking>
+    public class BookingConfiguration : BaseEntityTypeConfiguration<Booking>
     {
-        public void Configure(EntityTypeBuilder<Booking> builder)
+        public override void Configure(EntityTypeBuilder<Booking> builder)
         {
             builder.Property(b => b.Date)
                 .IsRequired();

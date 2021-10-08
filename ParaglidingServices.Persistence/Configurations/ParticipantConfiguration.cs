@@ -9,9 +9,9 @@ using ParaglidingServices.Domain.Entities;
 
 namespace ParaglidingServices.Persistence.Configurations
 {
-    public class ParticipantConfiguration : IEntityTypeConfiguration<Participant>
+    public class ParticipantConfiguration : BaseEntityTypeConfiguration<Participant>
     {
-        public void Configure(EntityTypeBuilder<Participant> builder)
+        public override void Configure(EntityTypeBuilder<Participant> builder)
         {
             //builder.HasOne(p => p.Pilot)
             //    .WithMany(p => p.Participants)

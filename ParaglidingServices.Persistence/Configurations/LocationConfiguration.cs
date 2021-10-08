@@ -10,9 +10,9 @@ using ParaglidingServices.Domain.Entities;
 
 namespace ParaglidingServices.Persistence.Configurations
 {
-    public class LocationConfiguration : IEntityTypeConfiguration<Location>
+    public class LocationConfiguration : BaseEntityTypeConfiguration<Location>
     {
-        public void Configure(EntityTypeBuilder<Location> builder)
+        public override void Configure(EntityTypeBuilder<Location> builder)
         {
             builder.HasMany(c => c.Competitions)
                 .WithOne(l => l.Location)

@@ -10,9 +10,9 @@ using ParaglidingServices.Domain.Entities;
 
 namespace ParaglidingServices.Persistence.Configurations
 {
-    public class CompetitionConfiguration : IEntityTypeConfiguration<Competition>
+    public class CompetitionConfiguration : BaseEntityTypeConfiguration<Competition>
     {
-        public void Configure(EntityTypeBuilder<Competition> builder)
+        public override void Configure(EntityTypeBuilder<Competition> builder)
         {
             builder.Property(c => c.CompetitionCode)
                 .IsRequired();

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ParaglidingServices.Persistence.Configurations
 {
-    public class LicenceConfiguration : IEntityTypeConfiguration<Licence>
+    public class LicenceConfiguration : BaseEntityTypeConfiguration<Licence>
     {
-        public void Configure(EntityTypeBuilder<Licence> builder)
+        public override void Configure(EntityTypeBuilder<Licence> builder)
         {
             builder.Property(l => l.LicenceNr)
                 .HasMaxLength(30)
@@ -26,6 +26,10 @@ namespace ParaglidingServices.Persistence.Configurations
 
             builder.Property(l => l.ValidUntil)
                 .IsRequired();
+
+            builder.HasOne(l => l.Pilot)
+                .WithOne(p => p.Licence)
+                .HasForeignKey<Licence>(p => p.PilotId);
         }
     }
 }

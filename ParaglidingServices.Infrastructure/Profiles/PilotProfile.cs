@@ -21,12 +21,11 @@ namespace ParaglidingServices.Infrastructure.Profiles
                             .ForMember(v => v.Licence.ValidUntil, w => w.MapFrom(x => x.ValidUntil));
             */
             CreateMap<PilotCreateUpdateModel, Pilot>()
-                .ForMember(entity => entity.Licence, memberOptions => memberOptions.MapFrom(model => model));
-
-            CreateMap<Pilot, PilotCreateUpdateModel>()
+                .ForMember(entity => entity.Licence, memberOptions => memberOptions.MapFrom(model => model))
                 .ReverseMap();
 
-            CreateMap<PilotCreateUpdateModel, Licence>();
+            CreateMap<PilotCreateUpdateModel, Licence>()
+                .ReverseMap();
         }
     }
 }

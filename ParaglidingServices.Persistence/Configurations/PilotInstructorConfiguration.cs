@@ -6,9 +6,9 @@ using ParaglidingServices.Domain.Entities;
 
 namespace ParaglidingServices.Persistence.Configurations
 {
-    public class PilotInstructorConfiguration : IEntityTypeConfiguration<PilotInstructor>
+    public class PilotInstructorConfiguration : BaseEntityTypeConfiguration<PilotInstructor>
     {
-        public void Configure(EntityTypeBuilder<PilotInstructor> builder)
+        public override void Configure(EntityTypeBuilder<PilotInstructor> builder)
         {
             
         }

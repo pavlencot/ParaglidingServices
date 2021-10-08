@@ -9,9 +9,9 @@ using ParaglidingServices.Domain.Entities;
 
 namespace ParaglidingServices.Persistence.Configurations
 {
-    public class OrganizerConfiguration : IEntityTypeConfiguration<Organizer>
+    public class OrganizerConfiguration : BaseEntityTypeConfiguration<Organizer>
     {
-        public void Configure(EntityTypeBuilder<Organizer> builder)
+        public override void Configure(EntityTypeBuilder<Organizer> builder)
         {
             builder.Property(o => o.OrganizationCode)
                 .IsRequired();

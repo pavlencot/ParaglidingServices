@@ -9,8 +9,6 @@ namespace ParaglidingServices.Persistence.Configurations
     {
         public override void Configure(EntityTypeBuilder<Pilot> builder)
         {
-            base.Configure(builder);
-
             builder.HasOne(l => l.Location)
                 .WithMany(p => p.Pilots)
                 .HasForeignKey(l => l.LocationId)
@@ -18,9 +16,7 @@ namespace ParaglidingServices.Persistence.Configurations
                 .IsRequired();
 
             builder.HasOne(l => l.Licence)
-                .WithOne(p => p.Pilot)
-                .HasForeignKey<Licence>(p => p.PilotId);
-
+                .WithOne(p => p.Pilot);
         }
     }
 }

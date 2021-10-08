@@ -5,9 +5,9 @@ using System;
 
 namespace ParaglidingServices.Persistence.Configurations
 {
-    public class ClientConfiguration : IEntityTypeConfiguration<Client>
+    public class ClientConfiguration : BaseEntityTypeConfiguration<Client>
     {
-        public void Configure(EntityTypeBuilder<Client> builder)
+        public override void Configure(EntityTypeBuilder<Client> builder)
         {
             builder.Property(c => c.PhoneNumber)
                 .IsRequired();
