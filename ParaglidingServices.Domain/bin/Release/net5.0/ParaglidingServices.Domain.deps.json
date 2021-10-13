@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "ParaglidingServices.Domain/1.0.0": {
+        "runtime": {
+          "ParaglidingServices.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ParaglidingServices.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

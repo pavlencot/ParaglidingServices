@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj": {}
+    "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj": {
+    "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj",
+        "projectUniqueName": "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj",
         "projectName": "ParaglidingServices.Core",
-        "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj",
+        "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices.Core\\ParaglidingServices.Core.csproj",
         "packagesPath": "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Core\\obj\\",
+        "outputPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tatiana.pavlenco\\AppData\\Roaming\\NuGet\\NuGet.Config",

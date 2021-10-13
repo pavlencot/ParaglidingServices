@@ -4,13 +4,13 @@ namespace ParaglidingServices.Domain.Entities
 {
     public class Booking : BaseEntity
     {
-        public long ClientId { get; set; }
-        public virtual Client Client { get; set; }
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+
         public DateTimeOffset Date { get; set; }
         public long BookingLocationId { get; set; }
         public virtual BookingLocation BookingLocation { get; set; }
-        public long CouponId { get; set; }
-        public virtual Coupon Coupon { get; set; }
         public long InstructorId { get; set; }
         public virtual PilotInstructor Instructor { get; set; }
 

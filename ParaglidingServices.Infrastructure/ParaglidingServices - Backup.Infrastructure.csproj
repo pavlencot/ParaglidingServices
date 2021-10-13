@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Clients\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ParaglidingServices.Core\ParaglidingServices.Core.csproj" />
+    <ProjectReference Include="..\ParaglidingServices.Domain\ParaglidingServices.Domain.csproj" />
+    <ProjectReference Include="..\ParaglidingServices.Persistence\ParaglidingServices.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

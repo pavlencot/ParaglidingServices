@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj": {}
+    "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj": {
+    "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj",
         "projectName": "ParaglidingServices.Domain",
-        "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj",
+        "projectPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices.Domain\\ParaglidingServices.Domain.csproj",
         "packagesPath": "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\ParaglidingServices\\ParaglidingServices.Domain\\obj\\",
+        "outputPath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tatiana.pavlenco\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

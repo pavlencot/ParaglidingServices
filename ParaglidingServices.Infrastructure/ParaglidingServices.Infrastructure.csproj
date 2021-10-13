@@ -10,11 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Clients\" />
-    <Folder Include="Models\Clients\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ParaglidingServices.Core\ParaglidingServices.Core.csproj" />
     <ProjectReference Include="..\ParaglidingServices.Domain\ParaglidingServices.Domain.csproj" />
     <ProjectReference Include="..\ParaglidingServices.Persistence\ParaglidingServices.Persistence.csproj" />

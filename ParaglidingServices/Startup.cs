@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,6 +14,8 @@ using ParaglidingServices.Infrastructure.Profiles;
 using ParaglidingServices.Api.Extensions;
 using FluentValidation.AspNetCore;
 using ParaglidingServices.Infrastructure.Validators.Organizers;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace ParaglidingServices
 {
@@ -41,8 +44,26 @@ namespace ParaglidingServices
 
             services.AddAutoMapper(typeof(OrganizerProfile).Assembly);
 
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
 
-            //Swagger
+                        ValidIssuer = "https://localhost:5001",
+                        ValidAudience = "https://localhost:5001",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+                    };
+                });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ParaglidingServices API1", Version = "v1" });
@@ -54,22 +75,20 @@ namespace ParaglidingServices
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParaglidingServices v1"));
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParaglidingServices v1"));
             }
 
-            app.UseHttpsRedirection();
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
-            //Swagger
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
+            //app.UseSwaggerUI(c =>
+            //{
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            //});
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

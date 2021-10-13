@@ -19,6 +19,203 @@ namespace ParaglidingServices.Persistence.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.Role", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("Roles", "Auth");
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.RoleClaim", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("RoleClaims", "Auth");
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("Users", "Auth");
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.UserClaim", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserClaims", "Auth");
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.UserLogin", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserLogins", "Auth");
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.UserRole", b =>
+                {
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("UserRole", "Auth");
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.UserToken", b =>
+                {
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("UserRoles", "Auth");
+                });
+
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.Booking", b =>
                 {
                     b.Property<long>("Id")
@@ -29,26 +226,29 @@ namespace ParaglidingServices.Persistence.Migrations
                     b.Property<long>("BookingLocationId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("ClientId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("CouponId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTimeOffset>("Date")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<long>("InstructorId")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BookingLocationId");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("CouponId")
-                        .IsUnique();
 
                     b.HasIndex("InstructorId");
 
@@ -68,30 +268,6 @@ namespace ParaglidingServices.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BookingLocations");
-                });
-
-            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Client", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTimeOffset?>("DateOfBirth")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.Competition", b =>
@@ -137,29 +313,6 @@ namespace ParaglidingServices.Persistence.Migrations
                     b.ToTable("CompetitionOrganizers");
                 });
 
-            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Coupon", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<Guid>("Code")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsApplied")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<DateTime>("ValidUntil")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Coupons");
-                });
-
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.FlightSchedule", b =>
                 {
                     b.Property<long>("Id")
@@ -171,12 +324,6 @@ namespace ParaglidingServices.Persistence.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<int>("DayOfWeek")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Hour")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Minutes")
                         .HasColumnType("int");
 
                     b.Property<long?>("PilotInstructorId")
@@ -322,24 +469,63 @@ namespace ParaglidingServices.Persistence.Migrations
                     b.HasDiscriminator().HasValue("PilotInstructor");
                 });
 
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.RoleClaim", b =>
+                {
+                    b.HasOne("ParaglidingServices.Domain.Entities.Auth.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.UserClaim", b =>
+                {
+                    b.HasOne("ParaglidingServices.Domain.Entities.Auth.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.UserLogin", b =>
+                {
+                    b.HasOne("ParaglidingServices.Domain.Entities.Auth.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.UserRole", b =>
+                {
+                    b.HasOne("ParaglidingServices.Domain.Entities.Auth.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ParaglidingServices.Domain.Entities.Auth.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.UserToken", b =>
+                {
+                    b.HasOne("ParaglidingServices.Domain.Entities.Auth.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.Booking", b =>
                 {
                     b.HasOne("ParaglidingServices.Domain.Entities.BookingLocation", "BookingLocation")
                         .WithMany("Bookings")
                         .HasForeignKey("BookingLocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ParaglidingServices.Domain.Entities.Client", "Client")
-                        .WithMany("Bookings")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ParaglidingServices.Domain.Entities.Coupon", "Coupon")
-                        .WithOne("Booking")
-                        .HasForeignKey("ParaglidingServices.Domain.Entities.Booking", "CouponId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("ParaglidingServices.Domain.Entities.PilotInstructor", "Instructor")
@@ -349,10 +535,6 @@ namespace ParaglidingServices.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("BookingLocation");
-
-                    b.Navigation("Client");
-
-                    b.Navigation("Coupon");
 
                     b.Navigation("Instructor");
                 });
@@ -440,21 +622,11 @@ namespace ParaglidingServices.Persistence.Migrations
                     b.Navigation("Bookings");
                 });
 
-            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Client", b =>
-                {
-                    b.Navigation("Bookings");
-                });
-
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.Competition", b =>
                 {
                     b.Navigation("CompetitionOrganizers");
 
                     b.Navigation("Participants");
-                });
-
-            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Coupon", b =>
-                {
-                    b.Navigation("Booking");
                 });
 
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.Location", b =>

@@ -10,3 +10,15 @@ C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.D
 C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ParaglidingServices.Domain.dll
 C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ref\ParaglidingServices.Domain.dll
 C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ParaglidingServices.Domain.pdb
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\bin\Debug\net5.0\ParaglidingServices.Domain.deps.json
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\bin\Debug\net5.0\ParaglidingServices.Domain.dll
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\bin\Debug\net5.0\ref\ParaglidingServices.Domain.dll
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\bin\Debug\net5.0\ParaglidingServices.Domain.pdb
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ParaglidingServices.Domain.csproj.AssemblyReference.cache
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ParaglidingServices.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ParaglidingServices.Domain.AssemblyInfoInputs.cache
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ParaglidingServices.Domain.AssemblyInfo.cs
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ParaglidingServices.Domain.csproj.CoreCompileInputs.cache
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ParaglidingServices.Domain.dll
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ref\ParaglidingServices.Domain.dll
+C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices.Domain\obj\Debug\net5.0\ParaglidingServices.Domain.pdb
