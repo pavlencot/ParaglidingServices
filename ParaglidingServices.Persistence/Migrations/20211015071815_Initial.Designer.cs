@@ -10,8 +10,8 @@ using ParaglidingServices.Persistence.Data;
 namespace ParaglidingServices.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211013122129_AddIdentity")]
-    partial class AddIdentity
+    [Migration("20211015071815_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,6 +94,12 @@ namespace ParaglidingServices.Persistence.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -108,6 +114,9 @@ namespace ParaglidingServices.Persistence.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<long>("OrganizerId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -116,6 +125,9 @@ namespace ParaglidingServices.Persistence.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<long>("PilotId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -136,6 +148,12 @@ namespace ParaglidingServices.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("OrganizerId")
+                        .IsUnique();
+
+                    b.HasIndex("PilotId")
+                        .IsUnique();
 
                     b.ToTable("Users", "Auth");
                 });
@@ -414,6 +432,9 @@ namespace ParaglidingServices.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Organizers");
@@ -455,6 +476,9 @@ namespace ParaglidingServices.Persistence.Migrations
                     b.Property<long>("LocationId")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LocationId");
@@ -478,6 +502,25 @@ namespace ParaglidingServices.Persistence.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.User", b =>
+                {
+                    b.HasOne("ParaglidingServices.Domain.Entities.Organizer", "Organizer")
+                        .WithOne("User")
+                        .HasForeignKey("ParaglidingServices.Domain.Entities.Auth.User", "OrganizerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ParaglidingServices.Domain.Entities.Pilot", "Pilot")
+                        .WithOne("User")
+                        .HasForeignKey("ParaglidingServices.Domain.Entities.Auth.User", "PilotId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Organizer");
+
+                    b.Navigation("Pilot");
                 });
 
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.Auth.UserClaim", b =>
@@ -641,6 +684,8 @@ namespace ParaglidingServices.Persistence.Migrations
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.Organizer", b =>
                 {
                     b.Navigation("CompetitionOrganizer");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.Pilot", b =>
@@ -648,6 +693,8 @@ namespace ParaglidingServices.Persistence.Migrations
                     b.Navigation("Licence");
 
                     b.Navigation("Participants");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.PilotInstructor", b =>

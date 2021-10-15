@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using ParaglidingServices.Domain.Entities.Auth;
+using System.Collections.Generic;
 
 namespace ParaglidingServices.Domain.Entities
 {
     public class Organizer : BaseEntity
     {
+        public string UserId { get; set; }
+        public User User { get; set; }
         public long OrganizationCode { get; set; }
         public string Name { get; set; }
         public string Adress { get; set; }

@@ -11,8 +11,8 @@ namespace ParaglidingServices.Domain.Entities
         public DateTimeOffset Date { get; set; }
         public long BookingLocationId { get; set; }
         public virtual BookingLocation BookingLocation { get; set; }
-        public long InstructorId { get; set; }
-        public virtual PilotInstructor Instructor { get; set; }
+        public long PilotInstructorId { get; set; }
+        public virtual PilotInstructor PilotInstructor { get; set; }
 
 
         public Booking()
