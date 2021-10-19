@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ParaglidingServices.Infrastructure.Models.Pagination
+namespace ParaglidingServices.Infrastructure.Models.Pagination.PagedRequestModel
 {
-    public class PagedResult<T> where T : class
+    public class PaginatedResult<T> where T : class
     {
         public int PageIndex { get; set; }
         public int PageSize { get; set; }

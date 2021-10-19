@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ParaglidingServices.Infrastructure.Constants;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace ParaglidingServices.Infrastructure.Models.Users
@@ -6,7 +7,9 @@ namespace ParaglidingServices.Infrastructure.Models.Users
     public class LoginModel
     {
         [Required]
-        public string Username { get; set; }
+        [RegularExpression(AppConstants.Parameters.EmailRegex)]
+
+        public string Login { get; set; }
         [Required]
         public string Password { get; set; }
 

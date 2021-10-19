@@ -33,7 +33,10 @@ namespace ParaglidingServices.Api.Helpers
             {
                 var adminUser = new User
                 {
-
+                    FirstName = "Tatiana",
+                    LastName = "Pavlenco",
+                    Email = "example@mail.com",
+                    UserName = "administrator"
                 };
                 var result = await userManager.CreateAsync(adminUser, "Admin12345!");
                 if (result.Succeeded)

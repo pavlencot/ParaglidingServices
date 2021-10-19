@@ -45,9 +45,20 @@ namespace ParaglidingServices.Api.Infrastructure.Security
             throw new NotImplementedException();
         }
 
-        public Task<IdentityResult> RegisterOrganizerAsync(RegisterModel model)
+        //correct and finish
+        public async Task<IdentityResult> RegisterOrganizerAsync(RegisterModel model)
         {
-            throw new NotImplementedException();
+            var user = new User
+            {
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.Phone,
+            };
+            var result = await _userManager.CreateAsync(user/*, password*/);
+
+
+            return result;
         }
 
         public Task<IdentityResult> RegisterPilotAsync(RegisterModel model)
@@ -58,6 +69,7 @@ namespace ParaglidingServices.Api.Infrastructure.Security
         public Task<string> SignInAsync(LoginModel model)
         {
             throw new NotImplementedException();
+
         }
 
         private Task<string> View(LoginModel model)

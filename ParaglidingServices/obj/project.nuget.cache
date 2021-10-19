@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NRLRBGa3IPJ3RZoFs6vikPJXWZbY97Hj1JJX86BXvAmvg6xoWJsSoXsTg0O1PD0WI7DWCbFEFN3LFTqKCHJTlA==",
+  "dgSpecHash": "2p3CNz/8mOppMQ4XybdeLDDmWq8FR2mcnqe4iIADyHcNznK2qmBx5/7P+vcWC2Q+6dmbVBqUwfYY0/RckSOaeg==",
   "success": true,
   "projectFilePath": "C:\\Users\\tatiana.pavlenco\\source\\repos\\InternshipProject\\ParaglidingServices\\ParaglidingServices\\ParaglidingServices.Api.csproj",
   "expectedPackageFiles": [
@@ -116,6 +116,7 @@
     "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
+    "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\system.linq.dynamic.core\\1.2.13\\system.linq.dynamic.core.1.2.13.nupkg.sha512",
     "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",
     "C:\\Users\\tatiana.pavlenco\\.nuget\\packages\\system.net.nameresolution\\4.3.0\\system.net.nameresolution.4.3.0.nupkg.sha512",

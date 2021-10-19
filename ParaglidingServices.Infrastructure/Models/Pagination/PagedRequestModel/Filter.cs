@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ParaglidingServices.Infrastructure.Models.Pagination
+namespace ParaglidingServices.Infrastructure.Models.Pagination.PagedRequestModel
 {
     public class Filter
     {

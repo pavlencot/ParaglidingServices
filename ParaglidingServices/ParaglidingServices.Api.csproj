@@ -27,23 +27,21 @@
     <ProjectReference Include="..\ParaglidingServices.Persistence\ParaglidingServices.Persistence.csproj" />
   </ItemGroup>
 
-	    <!--<Target Name="NSwag" AfterTargets="Build">
-	        <Copy SourceFiles="@(ReferencePath)" DestinationFolder="$(OutDir)References" />
-	        <Exec Command="$(NSwagExe_net50) run NSwagConfig.json /variables:Configuration=$(Configuration)">
-	        </Exec>
-	        <RemoveDir Directories="$(OutDir)References" />
-			<Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
-			<Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
-	    </Target>-->
-
 	<!--<Target Name="NSwag" BeforeTargets="AfterBuild">
-		<Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_net50) run NSwagConfig.json /variables:Configuration=$(Configuration)">
+		<Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_net50) run NSwagConfig.json /variables:OutDir=$(OutDir)">
 			<Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
 			<Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
 		</Exec>
 
 		<Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
 		<Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
+	</Target>-->
+
+	<!--
+	<Target Name="NSwag" AfterTargets="Build">
+		<Copy SourceFiles="@(ReferencePath)" DestinationFolder="$(OutDir)References" />
+		<Exec Command="$(NSwagExe_net5) run typeScriptDtoAutoGenerationConfig.json /variables:OutDir=$(OutDir) " />
+		<RemoveDir Directories="$(OutDir)References" />
 	</Target>-->
 
 </Project>

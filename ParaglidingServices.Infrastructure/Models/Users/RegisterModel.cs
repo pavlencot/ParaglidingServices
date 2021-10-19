@@ -14,5 +14,11 @@ namespace ParaglidingServices.Infrastructure.Models.Users
         public string LastName { get; set; }
         [Required]
         public string Phone { get; set; }
+        public string Password { get; set; }
+        [Required]
+        [Display(Name = "Confirm Password")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Your password and confirm password do not match")]
+        public string ConfirmPassword { get; set; }
     }
 }
