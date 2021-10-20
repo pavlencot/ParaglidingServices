@@ -15,6 +15,7 @@ namespace ParaglidingServices.Infrastructure.Profiles
         {
             CreateMap<Booking, BookingModel>()
                 .ForMember(b => b.BookingLocation, m => m.MapFrom(c => c.BookingLocation.StartLocation));
+
             CreateMap<BookingCreateModel, Booking>().ReverseMap();
         }
         

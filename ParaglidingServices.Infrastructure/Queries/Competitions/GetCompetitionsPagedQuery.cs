@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Models.Competitions;
+using ParaglidingServices.Infrastructure.Models.Pagination.Extensions;
 using ParaglidingServices.Infrastructure.Models.Pagination.PagedRequestModel;
 using ParaglidingServices.Persistence.Data;
 using ParaglidingServices.Persistence.Extensions;
@@ -13,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Queries.Competitions
 {
-    public class GetCompetitionsPagedQuery : Query<PagedRequest, PagedResult<CompetitionModel>>
+    public class GetCompetitionsPagedQuery : Query<PagedRequest, PaginatedResult<CompetitionModel>>
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -24,9 +26,11 @@ namespace ParaglidingServices.Infrastructure.Queries.Competitions
             _mapper = mapper;
         }
 
-        public override Task<PagedResult<CompetitionModel>> Dispatch(PagedRequest input, CancellationToken cancellationToken = default)
+        public override async Task<PaginatedResult<CompetitionModel>> Dispatch(PagedRequest input, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var competitionQuery = await _dbContext.Competitions.CreatePaginatedResultAsync<Competition, CompetitionModel>(input, _mapper);
+
+            return competitionQuery;
         }
     }
 }

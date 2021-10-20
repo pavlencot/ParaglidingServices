@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-
+using System.Collections.Generic;
 
 namespace ParaglidingServices.Domain.Entities.Auth
 {

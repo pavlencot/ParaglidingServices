@@ -24,6 +24,7 @@ namespace ParaglidingServices.Infrastructure.Profiles
                 .ForMember(entity => entity.Licence, memberOptions => memberOptions.MapFrom(model => model))
                 .ReverseMap();
 
+            CreateMap<Licence, PilotCreateUpdateModel>().ReverseMap();
         }
     }
 }

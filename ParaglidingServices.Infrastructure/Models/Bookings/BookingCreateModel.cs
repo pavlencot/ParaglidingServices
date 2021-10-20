@@ -8,7 +8,7 @@ namespace ParaglidingServices.Infrastructure.Models.Bookings
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public DateTimeOffset Date { get; set; }
-        public long BookingLocationId { get; set; }
+        public long BookingLocation { get; set; }
         public long? PilotInstructorId { get; set; }
     }
 }

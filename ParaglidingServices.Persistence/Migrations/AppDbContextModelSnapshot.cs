@@ -252,9 +252,6 @@ namespace ParaglidingServices.Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<long>("InstructorId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -264,11 +261,14 @@ namespace ParaglidingServices.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("PilotInstructorId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BookingLocationId");
 
-                    b.HasIndex("InstructorId");
+                    b.HasIndex("PilotInstructorId");
 
                     b.ToTable("Bookings");
                 });
@@ -299,8 +299,17 @@ namespace ParaglidingServices.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CompetitionName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("LocationId")
                         .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("PeriodFrom")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("PeriodTo")
+                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 
@@ -571,15 +580,15 @@ namespace ParaglidingServices.Persistence.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("ParaglidingServices.Domain.Entities.PilotInstructor", "Instructor")
+                    b.HasOne("ParaglidingServices.Domain.Entities.PilotInstructor", "PilotInstructor")
                         .WithMany("Bookings")
-                        .HasForeignKey("InstructorId")
+                        .HasForeignKey("PilotInstructorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BookingLocation");
 
-                    b.Navigation("Instructor");
+                    b.Navigation("PilotInstructor");
                 });
 
             modelBuilder.Entity("ParaglidingServices.Domain.Entities.Competition", b =>

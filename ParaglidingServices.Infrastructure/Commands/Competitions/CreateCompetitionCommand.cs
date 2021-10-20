@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Commands.Competitions
 {
-    public class CreateCompetitionCommand : Command<CompetitionModel, Competition>
+    public class CreateCompetitionCommand : Command<CompetitionCreateUpdateModel, Competition>
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -21,7 +21,7 @@ namespace ParaglidingServices.Infrastructure.Commands.Competitions
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public override async Task<Competition> Dispatch(CompetitionModel input)
+        public override async Task<Competition> Dispatch(CompetitionCreateUpdateModel input)
         {
             var competition = _mapper.Map<Competition>(input);
 

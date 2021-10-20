@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Commands.Competitions
 {
-    public class UpdateCompetitionCommand : Command<(long, CompetitionModel)>
+    public class UpdateCompetitionCommand : Command<(long, CompetitionCreateUpdateModel)>
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -21,7 +21,7 @@ namespace ParaglidingServices.Infrastructure.Commands.Competitions
             _mapper = mapper;
         }
 
-        public override async Task Dispatch((long, CompetitionModel) input)
+        public override async Task Dispatch((long, CompetitionCreateUpdateModel) input)
         {
             var (competitionId, competitionModel) = input;
 

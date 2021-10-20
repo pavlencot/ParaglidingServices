@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Commands.Competitions;
 using ParaglidingServices.Infrastructure.Models.Competitions;
+using ParaglidingServices.Infrastructure.Models.Pagination.PagedRequestModel;
 using ParaglidingServices.Infrastructure.Queries.Competitions;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,9 @@ namespace ParaglidingServices.Api.Controllers
     public class CompetitionsController : BaseController
     {
         [HttpPost]
-        public Task<ActionResult<long>> Create([FromBody] CompetitionModel input)
+        public Task<ActionResult<long>> Create([FromBody] CompetitionCreateUpdateModel input)
         {
-            return ExecuteCommandReturningEntityId<CreateCompetitionCommand, CompetitionModel, Competition>(input);
+            return ExecuteCommandReturningEntityId<CreateCompetitionCommand, CompetitionCreateUpdateModel, Competition>(input);
         }
 
         [HttpGet("{competitionId:long}")]
@@ -29,10 +30,16 @@ namespace ParaglidingServices.Api.Controllers
             return ExecuteQuery<GetCompetitionByIdQuery, long, CompetitionModel>(competitionId, cancellationToken);
         }
 
-        [HttpPut("{competitionId:long}")]
-        public Task<ActionResult> Update([FromRoute] long competitionId, [FromBody] CompetitionModel input)
+        [HttpGet]
+        public Task<ActionResult<PaginatedResult<CompetitionModel>>> GetPaginated([FromQuery] PagedRequest input, CancellationToken cancellationToken)
         {
-            return ExecuteCommand<UpdateCompetitionCommand, (long, CompetitionModel)>((competitionId, input));
+            return ExecuteQuery<GetCompetitionsPagedQuery, PagedRequest, PaginatedResult<CompetitionModel>>(input, cancellationToken);
+        }
+
+        [HttpPut("{competitionId:long}")]
+        public Task<ActionResult> Update([FromRoute] long competitionId, [FromBody] CompetitionCreateUpdateModel input)
+        {
+            return ExecuteCommand<UpdateCompetitionCommand, (long, CompetitionCreateUpdateModel)>((competitionId, input));
         }
 
         [HttpDelete("{competitionId:long}")]

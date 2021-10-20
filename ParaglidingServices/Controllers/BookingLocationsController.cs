@@ -4,6 +4,7 @@ using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Commands.BookingLocations;
 using ParaglidingServices.Infrastructure.Models;
 using ParaglidingServices.Infrastructure.Queries.BookingLocations;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,9 +22,9 @@ namespace ParaglidingServices.Api.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public Task<ActionResult<BookingLocationModel>> GetAllBookingLocation(CancellationToken cancellationToken)
+        public Task<ActionResult<IList<BookingLocationModel>>> GetAllBookingLocation(CancellationToken cancellationToken)
         {
-            return ExecuteQuery<GetAllBookingLocationsQuery, BookingLocationModel>(cancellationToken);
+            return ExecuteQuery<GetAllBookingLocationsQuery, IList<BookingLocationModel>>(cancellationToken);
         }
 
         [HttpDelete("{bookingLocationId:long}")]

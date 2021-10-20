@@ -1,13 +1,15 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using ParaglidingServices.Infrastructure.Models;
 using ParaglidingServices.Persistence.Data;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Queries.BookingLocations
 {
-    public class GetAllBookingLocationsQuery : Query<BookingLocationModel>
+    public class GetAllBookingLocationsQuery : Query<IList<BookingLocationModel>>
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -17,9 +19,11 @@ namespace ParaglidingServices.Infrastructure.Queries.BookingLocations
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public override Task<BookingLocationModel> Dispatch(CancellationToken cancellationToken = default)
+
+        public override async Task<IList<BookingLocationModel>> Dispatch(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var locations = await _dbContext.BookingLocations.ToListAsync();
+            return _mapper.Map<IList<BookingLocationModel>>(locations);
         }
     }
 }

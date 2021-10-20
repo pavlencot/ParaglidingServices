@@ -18,7 +18,6 @@ namespace ParaglidingServices.Api.Controllers
 
     [ApiController]
     [Route("api/[controller]")]
-    [ApiExplorerSettings(GroupName = "v1")]
     public class AccountsController : ControllerBase
     {
         private readonly AuthOptions _authenticationOptions;
@@ -68,7 +67,9 @@ namespace ParaglidingServices.Api.Controllers
                 {
                     FirstName = registerModel.FirstName,
                     LastName = registerModel.LastName,
-                    Email = registerModel.Email
+                    Email = registerModel.Email,
+                    PhoneNumber =registerModel.Phone,
+                    
                 };
                 var result = await _userManager.CreateAsync(user, registerModel.Password);
 
