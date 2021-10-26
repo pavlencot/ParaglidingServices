@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using ParaglidingServices.Api.Controllers;
 using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Infrastructure.Commands.Pilots;
+using ParaglidingServices.Infrastructure.Models.Pagination.PagedRequestModel;
 using ParaglidingServices.Infrastructure.Models.Pilots;
 using ParaglidingServices.Infrastructure.Queries.Pilots;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -23,9 +25,22 @@ namespace ParaglidingServices.Controllers
         [HttpGet("{pilotId:long}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public Task<ActionResult<PilotModel>> GetById([FromRoute] long pilotId, CancellationToken cancellationToken)
+        public Task<ActionResult<PilotModel>> GetPilotById([FromRoute] long pilotId, CancellationToken cancellationToken)
         {
             return ExecuteQuery<GetPilotByIdQuery, long, PilotModel>(pilotId, cancellationToken);
+        }
+
+        [HttpGet("get-paged")]
+        public Task<ActionResult<PaginatedResult<PilotModel>>> GetPaginated([FromQuery] PagedRequest input, CancellationToken cancellationToken)
+        {
+            return ExecuteQuery<GetPilotsPagedQuery, PagedRequest, PaginatedResult<PilotModel>>(input, cancellationToken);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public Task<ActionResult<IList<PilotModel>>> GetAllPilots(CancellationToken cancellationToken)
+        {
+            return ExecuteQuery<GetAllPilotsQuery, IList<PilotModel>>(cancellationToken);
         }
 
         [HttpPut("{pilotId:long}")]

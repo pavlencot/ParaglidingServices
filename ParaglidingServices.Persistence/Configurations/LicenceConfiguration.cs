@@ -17,6 +17,9 @@ namespace ParaglidingServices.Persistence.Configurations
                 .HasMaxLength(30)
                 .IsRequired();
 
+            builder.HasIndex(l => l.LicenceNr)
+                .IsUnique();
+
             builder.Property(l => l.Category)
                 .HasMaxLength(3)
                 .IsRequired();

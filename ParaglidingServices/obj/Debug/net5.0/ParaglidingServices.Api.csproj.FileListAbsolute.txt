@@ -79,7 +79,6 @@ C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\b
 C:\Users\tatiana.pavlenco\source\repos\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\appsettings.json
-C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\NSwagConfig.json
 C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\ParaglidingServices.Api.exe
 C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\ParaglidingServices.Api.deps.json
 C:\Users\tatiana.pavlenco\source\repos\InternshipProject\ParaglidingServices\ParaglidingServices\bin\Debug\net5.0\ParaglidingServices.Api.runtimeconfig.json

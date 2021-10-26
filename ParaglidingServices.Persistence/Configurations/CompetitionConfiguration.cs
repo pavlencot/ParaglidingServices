@@ -16,6 +16,9 @@ namespace ParaglidingServices.Persistence.Configurations
         {
             builder.Property(c => c.CompetitionCode)
                 .IsRequired();
+
+            builder.HasIndex(c => c.CompetitionCode)
+                .IsUnique();
         }
     }
 }

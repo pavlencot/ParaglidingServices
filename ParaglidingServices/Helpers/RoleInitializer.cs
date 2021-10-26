@@ -36,13 +36,13 @@ namespace ParaglidingServices.Api.Helpers
                     FirstName = "Tatiana",
                     LastName = "Pavlenco",
                     Email = "example@mail.com",
-                    UserName = "administrator"
+                    UserName = "administrator",
+                    PhoneNumber = "069719801"
                 };
-                var result = await userManager.CreateAsync(adminUser, "Admin12345!");
+                var result = await userManager.CreateAsync(adminUser, "Admin12!");
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRolesAsync(adminUser,
-                        new List<string> { AuthorizeRole.Administrator, AuthorizeRole.Pilot, AuthorizeRole.PilotInstructor, AuthorizeRole.Organizer });
+                    await userManager.AddToRoleAsync(adminUser, AuthorizeRole.Administrator);
                 }
             }
         }

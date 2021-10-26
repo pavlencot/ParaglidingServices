@@ -17,6 +17,15 @@ namespace ParaglidingServices.Persistence.Configurations
 
             builder.HasOne(l => l.Licence)
                 .WithOne(p => p.Pilot);
+
+            builder.HasOne(p => p.User)
+                .WithOne(u => u.Pilot);
+
+            builder.HasOne(p => p.User)
+                .WithOne(u => u.Pilot)
+                .HasForeignKey<Pilot>(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+                
         }
     }
 }

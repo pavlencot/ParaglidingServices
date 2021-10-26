@@ -11,6 +11,5 @@ namespace ParaglidingServices.Api.Helpers
         public const string Pilot = "pilot";
         public const string PilotInstructor = "pilotInstructor";
         public const string Organizer = "organizer";
-
     }
 }

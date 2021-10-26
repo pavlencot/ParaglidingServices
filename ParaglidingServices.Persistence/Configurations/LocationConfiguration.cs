@@ -17,6 +17,9 @@ namespace ParaglidingServices.Persistence.Configurations
             builder.HasMany(c => c.Competitions)
                 .WithOne(l => l.Location)
                 .HasForeignKey(l => l.LocationId);
+
+            builder.HasIndex(l => l.Country)
+                .IsUnique();
         }
     }
 }

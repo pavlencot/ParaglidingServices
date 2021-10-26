@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ParaglidingServices.Infrastructure.Models.Pilots;
 using ParaglidingServices.Persistence.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace ParaglidingServices.Infrastructure.Queries.Pilots
 {
@@ -21,7 +22,10 @@ namespace ParaglidingServices.Infrastructure.Queries.Pilots
 
         public override async Task<PilotModel> Dispatch(long input, CancellationToken cancellationToken = default)
         {
-            var pilot = await _dbContext.Pilots.SingleByIdOrDefaultAsync(input, cancellationToken);
+            var pilot = await _dbContext.Pilots.AsNoTracking()
+                .Include(x => x.Licence)
+                .Include(y => y.Location)
+                .SingleByIdOrDefaultAsync(input, cancellationToken);
 
             var result = _mapper.Map<PilotModel>(pilot);
 

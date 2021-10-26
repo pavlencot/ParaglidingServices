@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ParaglidingServices.Persistence.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,29 +29,11 @@ namespace ParaglidingServices.Persistence.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Country = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Locations", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Organizers",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OrganizationCode = table.Column<long>(type: "bigint", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Organizers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,13 +53,45 @@ namespace ParaglidingServices.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                schema: "Auth",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Competitions",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CompetitionCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LocationId = table.Column<long>(type: "bigint", nullable: false)
+                    CompetitionCode = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CompetitionName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LocationId = table.Column<long>(type: "bigint", nullable: false),
+                    PeriodFrom = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    PeriodTo = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,26 +102,6 @@ namespace ParaglidingServices.Persistence.Migrations
                         principalTable: "Locations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Pilots",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LocationId = table.Column<long>(type: "bigint", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pilots", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Pilots_Locations_LocationId",
-                        column: x => x.LocationId,
-                        principalTable: "Locations",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -134,169 +128,53 @@ namespace ParaglidingServices.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CompetitionOrganizers",
+                name: "Organizers",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CompetitionId = table.Column<long>(type: "bigint", nullable: false),
-                    OrganizerId = table.Column<long>(type: "bigint", nullable: false)
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    OrganizationCode = table.Column<long>(type: "bigint", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CompetitionOrganizers", x => x.Id);
+                    table.PrimaryKey("PK_Organizers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CompetitionOrganizers_Competitions_CompetitionId",
-                        column: x => x.CompetitionId,
-                        principalTable: "Competitions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CompetitionOrganizers_Organizers_OrganizerId",
-                        column: x => x.OrganizerId,
-                        principalTable: "Organizers",
+                        name: "FK_Organizers_Users_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "Auth",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Bookings",
+                name: "Pilots",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Date = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    BookingLocationId = table.Column<long>(type: "bigint", nullable: false),
-                    InstructorId = table.Column<long>(type: "bigint", nullable: false)
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    LocationId = table.Column<long>(type: "bigint", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                    table.PrimaryKey("PK_Pilots", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Bookings_BookingLocations_BookingLocationId",
-                        column: x => x.BookingLocationId,
-                        principalTable: "BookingLocations",
+                        name: "FK_Pilots_Locations_LocationId",
+                        column: x => x.LocationId,
+                        principalTable: "Locations",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Bookings_Pilots_InstructorId",
-                        column: x => x.InstructorId,
-                        principalTable: "Pilots",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "FlightSchedules",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    DayOfWeek = table.Column<int>(type: "int", nullable: false),
-                    PilotInstructorId = table.Column<long>(type: "bigint", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FlightSchedules", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_FlightSchedules_Pilots_PilotInstructorId",
-                        column: x => x.PilotInstructorId,
-                        principalTable: "Pilots",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Licences",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PilotId = table.Column<long>(type: "bigint", nullable: false),
-                    LicenceNr = table.Column<long>(type: "bigint", maxLength: 30, nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
-                    IssuedOn = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    ValidUntil = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Licences", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Licences_Pilots_PilotId",
-                        column: x => x.PilotId,
-                        principalTable: "Pilots",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Participants",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PilotId = table.Column<long>(type: "bigint", nullable: false),
-                    CompetitionId = table.Column<long>(type: "bigint", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Participants", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Participants_Competitions_CompetitionId",
-                        column: x => x.CompetitionId,
-                        principalTable: "Competitions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Participants_Pilots_PilotId",
-                        column: x => x.PilotId,
-                        principalTable: "Pilots",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                schema: "Auth",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PilotId = table.Column<long>(type: "bigint", nullable: false),
-                    OrganizerId = table.Column<long>(type: "bigint", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Organizers_OrganizerId",
-                        column: x => x.OrganizerId,
-                        principalTable: "Organizers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Users_Pilots_PilotId",
-                        column: x => x.PilotId,
-                        principalTable: "Pilots",
+                        name: "FK_Pilots_Users_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "Auth",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -395,15 +273,140 @@ namespace ParaglidingServices.Persistence.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "CompetitionOrganizers",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompetitionId = table.Column<long>(type: "bigint", nullable: false),
+                    OrganizerId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompetitionOrganizers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CompetitionOrganizers_Competitions_CompetitionId",
+                        column: x => x.CompetitionId,
+                        principalTable: "Competitions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CompetitionOrganizers_Organizers_OrganizerId",
+                        column: x => x.OrganizerId,
+                        principalTable: "Organizers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Date = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    BookingLocationId = table.Column<long>(type: "bigint", nullable: false),
+                    PilotInstructorId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bookings_BookingLocations_BookingLocationId",
+                        column: x => x.BookingLocationId,
+                        principalTable: "BookingLocations",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Bookings_Pilots_PilotInstructorId",
+                        column: x => x.PilotInstructorId,
+                        principalTable: "Pilots",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FlightSchedules",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    DayOfWeek = table.Column<int>(type: "int", nullable: false),
+                    PilotInstructorId = table.Column<long>(type: "bigint", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FlightSchedules", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FlightSchedules_Pilots_PilotInstructorId",
+                        column: x => x.PilotInstructorId,
+                        principalTable: "Pilots",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Licences",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PilotId = table.Column<long>(type: "bigint", nullable: false),
+                    LicenceNr = table.Column<long>(type: "bigint", maxLength: 30, nullable: false),
+                    Category = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    IssuedOn = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    ValidUntil = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Licences", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Licences_Pilots_PilotId",
+                        column: x => x.PilotId,
+                        principalTable: "Pilots",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Participants",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PilotId = table.Column<long>(type: "bigint", nullable: false),
+                    CompetitionId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Participants", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Participants_Competitions_CompetitionId",
+                        column: x => x.CompetitionId,
+                        principalTable: "Competitions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Participants_Pilots_PilotId",
+                        column: x => x.PilotId,
+                        principalTable: "Pilots",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_BookingLocationId",
                 table: "Bookings",
                 column: "BookingLocationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bookings_InstructorId",
+                name: "IX_Bookings_PilotInstructorId",
                 table: "Bookings",
-                column: "InstructorId");
+                column: "PilotInstructorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CompetitionOrganizers_CompetitionId",
@@ -416,6 +419,12 @@ namespace ParaglidingServices.Persistence.Migrations
                 column: "OrganizerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Competitions_CompetitionCode",
+                table: "Competitions",
+                column: "CompetitionCode",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Competitions_LocationId",
                 table: "Competitions",
                 column: "LocationId");
@@ -426,9 +435,40 @@ namespace ParaglidingServices.Persistence.Migrations
                 column: "PilotInstructorId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Licences_LicenceNr",
+                table: "Licences",
+                column: "LicenceNr",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Licences_PilotId",
                 table: "Licences",
                 column: "PilotId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Locations_Country",
+                table: "Locations",
+                column: "Country",
+                unique: true,
+                filter: "[Country] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Organizers_Name",
+                table: "Organizers",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Organizers_OrganizationCode",
+                table: "Organizers",
+                column: "OrganizationCode",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Organizers_UserId",
+                table: "Organizers",
+                column: "UserId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -445,6 +485,12 @@ namespace ParaglidingServices.Persistence.Migrations
                 name: "IX_Pilots_LocationId",
                 table: "Pilots",
                 column: "LocationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pilots_UserId",
+                table: "Pilots",
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
@@ -483,20 +529,6 @@ namespace ParaglidingServices.Persistence.Migrations
                 schema: "Auth",
                 table: "Users",
                 column: "NormalizedEmail");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_OrganizerId",
-                schema: "Auth",
-                table: "Users",
-                column: "OrganizerId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_PilotId",
-                schema: "Auth",
-                table: "Users",
-                column: "PilotId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -548,24 +580,24 @@ namespace ParaglidingServices.Persistence.Migrations
                 name: "BookingLocations");
 
             migrationBuilder.DropTable(
+                name: "Organizers");
+
+            migrationBuilder.DropTable(
                 name: "Competitions");
+
+            migrationBuilder.DropTable(
+                name: "Pilots");
 
             migrationBuilder.DropTable(
                 name: "Roles",
                 schema: "Auth");
 
             migrationBuilder.DropTable(
+                name: "Locations");
+
+            migrationBuilder.DropTable(
                 name: "Users",
                 schema: "Auth");
-
-            migrationBuilder.DropTable(
-                name: "Organizers");
-
-            migrationBuilder.DropTable(
-                name: "Pilots");
-
-            migrationBuilder.DropTable(
-                name: "Locations");
         }
     }
 }

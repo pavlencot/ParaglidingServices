@@ -16,6 +16,9 @@ using FluentValidation.AspNetCore;
 using ParaglidingServices.Infrastructure.Validators.Organizers;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using ParaglidingServices.Domain.Entities.Auth;
+using Microsoft.AspNetCore.Identity;
+using ParaglidingServices.Api.Infrastructure.Security;
 
 namespace ParaglidingServices
 {
@@ -30,39 +33,61 @@ namespace ParaglidingServices
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("ConnectionStr")));
+            services.AddDbContext<AppDbContext>(o =>
+            {
+                o.UseSqlServer(Configuration.GetConnectionString("ConnectionStr"));
+            });
 
+            /*            services.AddIdentity<User, Role>(options =>
+                        {
+                            options.Password.RequiredLength = 8;
+                            options.Password.RequireDigit = false;
+                            options.Password.RequireUppercase = false;
+                            options.Password.RequireLowercase = false;
+                            options.Password.RequireNonAlphanumeric = false;
+                            options.User.RequireUniqueEmail = true;
+                        })
+                            .AddRoles<Role>()
+                            .AddEntityFrameworkStores<AppDbContext>()
+                            .AddUserManager<UserManager<User>>()
+                            .AddSignInManager<SignInManager<User>>();*/
+            services.AddCors();
+
+            services.ConfigureIdentity();
+
+            var authOptions = services.ConfigureAuthOptions(Configuration);
+            services.AddJwtAuthentication(authOptions);
             services.AddControllers()
                 .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<OrganizerCreateUpdateModelValidator>());
 
+            /*            services.AddAuthentication(opt =>
+                    {
+                        opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                        opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                    })
+                        .AddJwtBearer(opt =>
+                        {
+                            opt.TokenValidationParameters = new TokenValidationParameters
+                            {
+                                ValidateIssuer = true,
+                                ValidateAudience = true,
+                                ValidateLifetime = true,
+                                ValidateIssuerSigningKey = true,
+
+                                ValidIssuer = "https://localhost:44335",
+                                ValidAudience = "https://localhost:44335",
+                                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+                            };
+                        });
+                        */
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
             services.AddCommands();
             services.AddQueries();
 
-            services.AddAutoMapper(typeof(OrganizerProfile).Assembly);
+            //services.AddScoped<JwtService>();
 
-            services.AddAuthentication(opt =>
-            {
-                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-
-                        ValidIssuer = "https://localhost:5001",
-                        ValidAudience = "https://localhost:5001",
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
-                    };
-                });
 
             services.AddSwaggerGen(c =>
             {
@@ -75,10 +100,8 @@ namespace ParaglidingServices
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //next to comment
 
             }
-            //to comment
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -87,6 +110,12 @@ namespace ParaglidingServices
             });
 
             app.UseRouting();
+
+            app.UseCors(x => x
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .SetIsOriginAllowed(origin => true) // allow any origin
+               .AllowCredentials()); // allow credentials
 
             app.UseAuthentication();
             app.UseAuthorization();

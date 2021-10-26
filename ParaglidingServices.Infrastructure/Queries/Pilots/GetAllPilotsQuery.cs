@@ -1,13 +1,15 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using ParaglidingServices.Infrastructure.Models.Pilots;
 using ParaglidingServices.Persistence.Data;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ParaglidingServices.Infrastructure.Queries.Pilots
 {
-    public class GetAllPilotsQuery : Query<PilotModel>
+    public class GetAllPilotsQuery : Query<IList<PilotModel>>
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -18,9 +20,15 @@ namespace ParaglidingServices.Infrastructure.Queries.Pilots
             _mapper = mapper;
         }
 
-        public override Task<PilotModel> Dispatch(CancellationToken cancellationToken = default)
+        public override async Task<IList<PilotModel>> Dispatch(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var pilots = await _dbContext.Pilots
+                .AsNoTracking()
+                .Include(u => u.User)
+                .Include(x => x.Licence)
+                .Include(y => y.Location)
+                .ToListAsync();
+            return _mapper.Map<IList<PilotModel>>(pilots);
         }
     }
 }

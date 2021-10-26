@@ -5,7 +5,7 @@ namespace ParaglidingServices.Domain.Entities
 {
     public class Pilot : BaseEntity
     {
-        public string UserId { get; set; }
+        public long UserId { get; set; }
         public User User { get; set; }
         public virtual Licence Licence { get; set; }
         public long LocationId { get; set; }

@@ -16,9 +16,15 @@ namespace ParaglidingServices.Persistence.Configurations
             builder.Property(o => o.OrganizationCode)
                 .IsRequired();
 
+            builder.HasIndex(o => o.OrganizationCode)
+                .IsUnique();
+
             builder.Property(o => o.Name)
                 .HasMaxLength(50)
                 .IsRequired();
+
+            builder.HasIndex(o => o.Name)
+                .IsUnique();
 
             builder.Property(o => o.Adress)
                 .IsRequired();
@@ -28,7 +34,13 @@ namespace ParaglidingServices.Persistence.Configurations
 
             builder.Property(o => o.Description)
                 .HasMaxLength(500)
-                .IsRequired();        
+                .IsRequired();
+
+
+            builder.HasOne(o => o.User)
+                .WithOne(u => u.Organizer)
+                .HasForeignKey<Organizer>(o => o.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
         }
     }

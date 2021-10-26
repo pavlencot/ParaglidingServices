@@ -1,16 +1,25 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using ParaglidingServices.Api.Configuration;
+using ParaglidingServices.Api.Helpers;
+using ParaglidingServices.Api.Infrastructure.Security;
+using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Domain.Entities.Auth;
+using ParaglidingServices.Infrastructure.Commands.Users;
+using ParaglidingServices.Infrastructure.Models.Pilots;
 using ParaglidingServices.Infrastructure.Models.Users;
+using ParaglidingServices.Persistence.Data;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ParaglidingServices.Api.Controllers
@@ -23,18 +32,26 @@ namespace ParaglidingServices.Api.Controllers
         private readonly AuthOptions _authenticationOptions;
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
-
-        public AccountsController(IOptions<AuthOptions> authenticationOptions, SignInManager<User> signInManager, UserManager<User> userManager)
+        private readonly IMapper _mapper;
+        private readonly AppDbContext _dbContext;
+        public AccountsController(IOptions<AuthOptions> authenticationOptions, 
+            SignInManager<User> signInManager, 
+            UserManager<User> userManager,
+            IMapper mapper,
+            AppDbContext dbContext)
         {
             _authenticationOptions = authenticationOptions.Value;
             _signInManager = signInManager;
             _userManager = userManager;
+            _mapper = mapper;
+            _dbContext = dbContext;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginModel loginModel)
+        public async Task<IActionResult> Login(LoginModel model)
         {
-            var checkingPasswordResult = await _signInManager.PasswordSignInAsync(loginModel.Login, loginModel.Password, false, false);
+            var checkingPasswordResult = await _signInManager.PasswordSignInAsync(model.Login, model.Password, false, false);
 
             if (checkingPasswordResult.Succeeded)
             {
@@ -42,7 +59,7 @@ namespace ParaglidingServices.Api.Controllers
                 var jwtSecurityToken = new JwtSecurityToken(
                      issuer: _authenticationOptions.Issuer,
                      audience: _authenticationOptions.Audience,
-                     claims: new List<Claim>() /*{ new Claim(ClaimTypes.Role, "pilot") }*/,
+                     claims: new List<Claim>(),
                      expires: DateTime.Now.AddDays(30),
                      signingCredentials: signinCredentials
                 );
@@ -53,30 +70,37 @@ namespace ParaglidingServices.Api.Controllers
 
                 return Ok(new { AccessToken = encodedToken });
             }
-
             return Unauthorized();
         }
 
-
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterModel registerModel)
+        [AllowAnonymous]
+        [HttpPost("register/pilot")]
+        public async Task<IActionResult> RegisterPilot([FromBody]RegisterPilotModel model)
         {
-            if(ModelState.IsValid)
+            var userModel = model.UserModel;
+            var pilotModel = model.PilotModel;
+
+            if (ModelState.IsValid)
             {
                 var user = new User
                 {
-                    FirstName = registerModel.FirstName,
-                    LastName = registerModel.LastName,
-                    Email = registerModel.Email,
-                    PhoneNumber =registerModel.Phone,
-                    
+                    FirstName = userModel.FirstName,
+                    LastName = userModel.LastName,
+                    Email = userModel.Email,
+                    UserName = userModel.UserName,
+                    PhoneNumber = userModel.PhoneNumber
                 };
-                var result = await _userManager.CreateAsync(user, registerModel.Password);
 
+                var pilot = _mapper.Map<Pilot>(pilotModel);
+
+                var result = await _userManager.CreateAsync(user, userModel.Password);
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Login", "Account");
+                    await _userManager.AddToRoleAsync(user, AuthorizeRole.Pilot);
+                    await _dbContext.Pilots.AddAsync(pilot);
+                    await _signInManager.SignInAsync(user, false);
+
+                    return Ok(result);
                 }
                 else
                 {
@@ -85,10 +109,85 @@ namespace ParaglidingServices.Api.Controllers
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
                 }
-/*                await _userManager.AddToRoleAsync(user, ????);
-*/            }
-            return Ok(registerModel);
+            }
+            return StatusCode(StatusCodes.Status422UnprocessableEntity);
         }
-        
+
+        [AllowAnonymous]
+        [HttpPost("register/intructor")]
+        public async Task<IActionResult> RegisterInstructor([FromBody] RegisterInstructorModel userModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                {
+                    FirstName = userModel.FirstName,
+                    LastName = userModel.LastName,
+                    Email = userModel.Email,
+                    UserName = userModel.UserName,
+                    PhoneNumber = userModel.PhoneNumber
+                };
+
+                var result = await _userManager.CreateAsync(user, userModel.Password);
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, AuthorizeRole.PilotInstructor);
+                    await _signInManager.SignInAsync(user, false);
+
+                    return Ok(result);
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+            return StatusCode(StatusCodes.Status422UnprocessableEntity);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("register/organizer")]
+        public async Task<IActionResult> RegisterOrganizer([FromBody] RegisterOrganizerModel userModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                {
+                    FirstName = userModel.FirstName,
+                    LastName = userModel.LastName,
+                    Email = userModel.Email,
+                    UserName = userModel.UserName,
+                    PhoneNumber = userModel.PhoneNumber
+                };
+
+                var result = await _userManager.CreateAsync(user, userModel.Password);
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, AuthorizeRole.Organizer);
+                    await _signInManager.SignInAsync(user, false);
+
+                    return Ok(result);
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+            return StatusCode(StatusCodes.Status422UnprocessableEntity);
+        }
+
+        [Authorize]
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return Ok();
+        }
     }
+
 }

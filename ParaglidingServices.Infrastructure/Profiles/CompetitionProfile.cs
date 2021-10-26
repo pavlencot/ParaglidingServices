@@ -12,9 +12,12 @@ namespace ParaglidingServices.Infrastructure.Profiles
     public class CompetitionProfile : Profile
     {
         public CompetitionProfile()
-        {
-            CreateMap<CompetitionModel, Competition>().ReverseMap();
-            CreateMap<CompetitionCreateUpdateModel, Competition>().ReverseMap();
+        {            
+            CreateMap<CompetitionCreateUpdateModel, Competition>();
+
+            CreateMap<Competition, CompetitionModel>()
+                .ForMember(c => c.Location, d => d.MapFrom(e => e.Location.Country))
+                .ReverseMap();
         }
     }
 }

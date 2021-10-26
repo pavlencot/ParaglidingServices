@@ -28,7 +28,7 @@ namespace ParaglidingServices.Persistence.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-            
+
             ApplyIdentityMapConfiguration(modelBuilder);
         }
 

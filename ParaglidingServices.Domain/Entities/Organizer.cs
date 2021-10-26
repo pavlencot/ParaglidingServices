@@ -5,7 +5,7 @@ namespace ParaglidingServices.Domain.Entities
 {
     public class Organizer : BaseEntity
     {
-        public string UserId { get; set; }
+        public long UserId { get; set; }
         public User User { get; set; }
         public long OrganizationCode { get; set; }
         public string Name { get; set; }

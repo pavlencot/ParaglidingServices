@@ -16,7 +16,7 @@ namespace ParaglidingServices.Api.Configuration
 
         public SymmetricSecurityKey GetSymmetricSecurityKey()
         {
-            return new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
+            return new SymmetricSecurityKey(Encoding.ASCII.GetBytes("superSecretKey@345"));
         }
     }
 }

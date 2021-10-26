@@ -30,7 +30,7 @@ namespace ParaglidingServices.Api.Controllers
             return ExecuteQuery<GetCompetitionByIdQuery, long, CompetitionModel>(competitionId, cancellationToken);
         }
 
-        [HttpGet]
+        [HttpGet("get-paged")]
         public Task<ActionResult<PaginatedResult<CompetitionModel>>> GetPaginated([FromQuery] PagedRequest input, CancellationToken cancellationToken)
         {
             return ExecuteQuery<GetCompetitionsPagedQuery, PagedRequest, PaginatedResult<CompetitionModel>>(input, cancellationToken);

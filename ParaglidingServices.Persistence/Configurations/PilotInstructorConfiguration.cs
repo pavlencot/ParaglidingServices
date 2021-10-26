@@ -10,7 +10,6 @@ namespace ParaglidingServices.Persistence.Configurations
     {
         public override void Configure(EntityTypeBuilder<PilotInstructor> builder)
         {
-            
         }
     }
 }

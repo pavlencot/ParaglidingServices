@@ -6,6 +6,6 @@ namespace ParaglidingServices.Domain.Entities
     {
         public DateTimeOffset Date { get; set; }
         public DayOfWeek DayOfWeek { get; set; }
-
+        public PilotInstructor PilotInstructor { get; set; }
     }
 }
