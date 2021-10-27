@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 namespace ParaglidingServices.Api.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class PilotInstructorsController : BaseController
     {
         [HttpPost]

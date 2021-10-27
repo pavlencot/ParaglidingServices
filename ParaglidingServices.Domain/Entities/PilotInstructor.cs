@@ -6,10 +6,5 @@ namespace ParaglidingServices.Domain.Entities
     {
         public virtual IEnumerable<Booking> Bookings { get; set; }
         public IEnumerable<FlightSchedule> FlightSchedules { get; set; }
-        
-        public PilotInstructor()
-        {
-
-        }
     }
 }

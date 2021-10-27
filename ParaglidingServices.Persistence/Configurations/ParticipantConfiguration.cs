@@ -13,10 +13,6 @@ namespace ParaglidingServices.Persistence.Configurations
     {
         public override void Configure(EntityTypeBuilder<Participant> builder)
         {
-            //builder.HasOne(p => p.Pilot)
-            //    .WithMany(p => p.Participants)
-            //    .HasForeignKey(p => p.PilotId);
-
             builder.HasOne(c => c.Competition)
                 .WithMany(p => p.Participants)
                 .HasForeignKey(c => c.CompetitionId);

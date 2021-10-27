@@ -14,10 +14,5 @@ namespace ParaglidingServices.Domain.Entities
 
         public virtual ICollection<CompetitionOrganizer> CompetitionOrganizers { get; set; }
         public virtual ICollection<Participant> Participants { get; set; }
-
-        public Competition()
-        {
-
-        }
     }
 }

@@ -31,11 +31,6 @@ namespace ParaglidingServices.Persistence.Configurations
                 .WithMany(b => b.Bookings)
                 .OnDelete(DeleteBehavior.NoAction)
                 .HasForeignKey(b => b.BookingLocationId);
-
-            //builder.HasOne(i => i.Instructor)
-            //    .WithMany(b => b.Bookings)
-            //    .HasForeignKey(i => i.InstructorId);
-
         }
     }
 }

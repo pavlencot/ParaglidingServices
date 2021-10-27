@@ -10,10 +10,5 @@ namespace ParaglidingServices.Domain.Entities
         public string Category { get; set; }
         public DateTimeOffset IssuedOn { get; set; }
         public DateTimeOffset ValidUntil { get; set; }
-
-        public Licence()
-        {
-
-        }
     }
 }

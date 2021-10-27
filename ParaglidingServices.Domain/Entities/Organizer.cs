@@ -25,8 +25,7 @@ namespace ParaglidingServices.Domain.Entities
             Name = name;
             Adress = adress;
             PhoneNumber = phoneNumber;
-            Description = description;
-            
+            Description = description;  
         }
     }
 }

@@ -6,10 +6,5 @@ namespace ParaglidingServices.Domain.Entities
     {
         public string StartLocation { get; set; }
         public virtual IEnumerable<Booking> Bookings { get; set; }
-
-        public BookingLocation()
-        {
-
-        }
     }
 }

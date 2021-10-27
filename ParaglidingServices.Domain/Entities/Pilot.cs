@@ -11,10 +11,5 @@ namespace ParaglidingServices.Domain.Entities
         public long LocationId { get; set; }
         public virtual Location Location { get; set; }
         public virtual IEnumerable<Participant> Participants { get; set; }
-
-        public Pilot()
-        {
-
-        }
     }
 }

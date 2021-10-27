@@ -13,11 +13,5 @@ namespace ParaglidingServices.Domain.Entities
         public virtual BookingLocation BookingLocation { get; set; }
         public long PilotInstructorId { get; set; }
         public virtual PilotInstructor PilotInstructor { get; set; }
-
-
-        public Booking()
-        {
-
-        }
     }
 }

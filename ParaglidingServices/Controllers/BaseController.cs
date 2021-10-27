@@ -67,15 +67,5 @@ namespace ParaglidingServices.Api.Controllers
             var query = HttpContext.RequestServices.GetRequiredService<TQuery>();
             return await query.Dispatch(input, cancellationToken);
         }
-
-/*        protected async Task<ActionResult> ExecuteAuthCommand<TCommand, TInput, TOutput>(TInput input)
-            where TCommand : Command<TInput, TOutput> where TOutput : User
-        {
-            var command = HttpContext.RequestServices.GetRequiredService<TCommand>();
-            var output = await command.Dispatch(input);
-            await UnitOfWork.SaveChangesAsync();
-            return StatusCode(StatusCodes.Status201Created, output.Id);
-        }*/
-
     }
 }

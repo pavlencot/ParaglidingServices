@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using ParaglidingServices.Api.Helpers;
 using ParaglidingServices.Domain.Entities;
 using ParaglidingServices.Domain.Entities.Auth;
-using ParaglidingServices.Infrastructure.Constants;
-using ParaglidingServices.Infrastructure.Models.Pilots;
 using ParaglidingServices.Infrastructure.Models.Users;
 using ParaglidingServices.Persistence.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ParaglidingServices.Api.Infrastructure.Security
@@ -39,28 +34,6 @@ namespace ParaglidingServices.Api.Infrastructure.Security
             _dbContext = dbContext;
             _mapper = mapper;
         }
-
-        //correct and finish
-/*        public async Task<IdentityResult> RegisterUserAsync(RegisterModel model)
-        {
-            var user = new User
-            {
-                Email = model.Email,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                PhoneNumber = model.Phone,
-                //PasswordHash = model.Password
-            };
-            var result = await _userManager.CreateAsync(user, model.Password);
-
-            if (result.Succeeded)
-            {
-                await _userManager.AddToRoleAsync(user, model.Role);
-                await _signInManager.SignInAsync(user, isPersistent: false);
-            }
-
-            return result;
-        }*/
 
         public async Task<IdentityResult> RegisterPilotAsync(RegisterPilotModel model)
         {

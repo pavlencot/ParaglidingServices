@@ -32,12 +32,6 @@ namespace ParaglidingServices.Api.Controllers
             return ExecuteCommand<UpdateOrganizerCommand, (long, OrganizerCreateUpdateModel)>((organizerId, input));
         }
 
-/*        [HttpPatch("{organizerId:long}")]
-        public Task<ActionResult> Patch([FromRoute] long organizerId, JsonPatchDocument<Organizer> patchEntity)
-        {
-
-        }*/
-
         [HttpDelete("{organizerId:long}")]
         public Task<ActionResult> Delete([FromRoute] long organizerId)
         {

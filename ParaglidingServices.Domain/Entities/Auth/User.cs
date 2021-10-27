@@ -9,11 +9,5 @@ namespace ParaglidingServices.Domain.Entities.Auth
         public string LastName { get; set; }
         public Pilot Pilot { get; set; }
         public Organizer Organizer { get; set; }
-
-        public User()
-        {
-
-        }
-
     }
 }

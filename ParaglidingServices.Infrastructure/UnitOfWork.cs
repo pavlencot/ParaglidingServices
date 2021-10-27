@@ -13,10 +13,6 @@ namespace ParaglidingServices.Infrastructure
         {
             _dbContext = dbContext;
         }
-        public void AssertEntityAdded<TEntity>(TEntity entity) where TEntity : class
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task SaveChangesAsync()
         {
